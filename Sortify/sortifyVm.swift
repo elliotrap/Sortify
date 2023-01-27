@@ -5,28 +5,48 @@ class SortifyViewModel: ObservableObject {
     
     @ObservedObject var cvm = ColorViewModel()
     
+    @Published var algoButtonPressed = false 
     @Published var expand3 = false
     @Published var expand2 = false
     @Published var expand = false
+    
     @Published var data = [Int]()
-    @Published var data2 = [Int]()
+
     
     @Published var resetTime: Double = 0
-    @Published var sliderValue: Double = 50
+    @Published var sliderValue: Double = 49.9999999999
     @Published var isSorting = false
     @Published var activeValue = 0
     @Published var previousValue = 0
     @Published var swoop: Int?
     
+    @Published var animationAmount: CGFloat = 1
+    @Published var toggleGraph = false
+    @Published var showGraph = 0
     @Published var selectAlgorithm = "bubble"
     @Published var selectGraph = ".bar"
-    @Published var  myTitle: String = "Bubble Sort"
+    @Published var myTitle: String = "bubbleSort()"
+    @Published var graphMark: String = "|  .bar"
     @Published var bubbleSortPrompt: String = "Prompt"
-    
-    
+   
 
 
-    
+    func mapSliderValueToDelayTime(_ sliderValue: Double) -> Double {
+      let minDelay: Double = 1.0 // reset after 0.5 sec for sorting 0-20ms
+      let maxDelay: Double = 4.0 // reset after 1 sec for sorting 20-60ms
+      let minValue: Double = 00.0
+      let maxValue: Double = 100.0
+      
+      if sliderValue <= minValue {
+        return minDelay
+      } else if sliderValue >= maxValue {
+        return maxDelay
+      } else {
+        let delayRange = maxDelay - minDelay
+        let valueRange = maxValue - minValue
+        return (sliderValue - minValue) * delayRange / valueRange + minDelay
+      }
+    }
     
     
     func swapColors(value: Int) -> Color {
@@ -41,6 +61,12 @@ class SortifyViewModel: ObservableObject {
         return cvm.orange
     }
     
+    
+    func swapHelper(_ firstIndex: Int, _ secondIndex: Int) {
+        let temp = data[secondIndex]
+        data[secondIndex] = data[firstIndex]
+        data[firstIndex] = temp
+    }
     
     func bubbleSort() async throws {
         self.isSorting = true
@@ -65,42 +91,29 @@ class SortifyViewModel: ObservableObject {
             
    
             }
-        
-        func swapHelper(_ firstIndex: Int, _ secondIndex: Int) {
-            let temp = data[secondIndex]
-            data[secondIndex] = data[firstIndex]
-            data[firstIndex] = temp
+        let delayTime: Double = mapSliderValueToDelayTime(sliderValue)
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayTime) {
+          self.isSorting = false
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(resetTime))) {
-            self.isSorting = false
-            }
     }
-    
-    // insertion sort
+
     func insertionSort() async throws {
-        var isSorted = false
-        var counter = 0
+        self.isSorting = true
         
-        
-        while !isSorted {
-            isSorted = true
-            for i in 0 ..< data.count - 1 - counter {
-                if data[i] > data[i + 1] {
-                    swapHelper(i, i + 1)
-                    try await Task.sleep(until: .now.advanced(by: .milliseconds(resetTime)), clock: .continuous)
-                    isSorted = false
-                    
-                }
-                
+        for i in 1 ..< data.count {
+            var j = i
+            previousValue = data[i]
+            activeValue = data[i - 1]
+            while j > 0, data[j] < data[j - 1] {
+                swapHelper(j, j - 1)
+                try await Task.sleep(until: .now.advanced(by: .milliseconds(sliderValue)), clock: .continuous)
+               
+                j = j - 1
             }
-            counter = counter + 1
         }
-        
-        func swapHelper(_ firstIndex: Int, _ secondIndex: Int) {
-            let temp = data[secondIndex]
-            data[secondIndex] = data[firstIndex]
-            data[firstIndex] = temp
+        let delayTime: Double = mapSliderValueToDelayTime(sliderValue)
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayTime) {
+            self.isSorting = false
         }
     }
 }
