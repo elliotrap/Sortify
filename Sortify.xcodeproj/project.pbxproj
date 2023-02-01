@@ -40,7 +40,7 @@
 		21C57F2829820EC500EBAC0F /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		21CF73BD297A14D400EEA10C /* Sortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CF73C0297A14D400EEA10C /* SortifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortifyApp.swift; sourceTree = "<group>"; };
-		21CF73C2297A14D400EEA10C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		21CF73C2297A14D400EEA10C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		21CF73C4297A14D500EEA10C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21CF73C7297A14D500EEA10C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21CF73CD297A14D500EEA10C /* SortifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SortifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };

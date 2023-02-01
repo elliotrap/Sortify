@@ -10,13 +10,7 @@ import Charts
 
 
 struct ContentView : View {
-    var input: [Int] {
-        var array = [Int]()
-        for i in 1...35{
-            array.append(i)
-        }
-        return array.shuffled()
-    }
+   
     // Back-end view model
     @ObservedObject var vm = SortifyViewModel()
     
@@ -30,6 +24,7 @@ struct ContentView : View {
     var body: some View {
         
         
+
         ScrollView {
             
             HStack {
@@ -42,7 +37,7 @@ struct ContentView : View {
                     RoundedRectangle(cornerRadius: 25)
                     
                         .foregroundColor(cvm.graphBackground)
-                        .position(x: 175, y: -40)
+                        .position(x: 175, y: 75)
                         .frame(width: 350, height: 630)
                     
                     // control pane for the buttons
@@ -55,7 +50,7 @@ struct ContentView : View {
                                 endPoint: .bottom)
                         )
                         .frame(width: 305, height: 200)
-                        .position(x:215, y: 560)
+                        .position(x:250, y: 543)
                     
                     
                     
@@ -63,22 +58,12 @@ struct ContentView : View {
                     RoundedRectangle(cornerRadius: 25)
                         
                         .foregroundColor(cvm.graphBackground)
-                        .frame(width: 350, height: 740)
-                        .position(x: 215, y: 1090)
+                        .frame(width: 350, height: 400)
+                        .position(x: 250, y: 930)
                     
                     ZStack {
                         
-                        // pseudo code background
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(
-                                LinearGradient (
-                                    
-                                    gradient: Gradient(colors: [cvm.controlBackgroundBlue, cvm.controlBackgroundBlack]),
-                                    startPoint: .top,
-                                    endPoint: .bottom)
-                            )
-                            .frame(width: 305, height: 350)
-                            .position(x:215, y: 930)
+                        
                         
                         
                         // Algorithm title
@@ -93,7 +78,7 @@ struct ContentView : View {
                         Text(vm.graphMark)
                             .font(.system(size: 12))
                             .foregroundColor(cvm.orange)
-                            .position(x: 212, y: 440)
+                            .position(x: 242, y: 431)
                         
                         // Algorithm title
                         Text(vm.myTitle)
@@ -103,26 +88,24 @@ struct ContentView : View {
                             .position(x: 210, y: 20)
                         
                         // Algorithm pseudo code
-                        Text(textVm.pseudoCode)
-                            .font(.system(size: 17))
-                            .foregroundColor(Color.white)
-                            .position(x: 130, y: 480)
-                            .frame(width: 250, height: 500)
-                        
-                        // Algorithm description
-                        Text(textVm.prompt)
-                            .font(.system(size: 17))
-                            .foregroundColor(Color.white)
-                            .multilineTextAlignment(.center)
-                            .position(x: 150, y: 900)
-                            .frame(width: 300, height: 500)
-                    
-                        
+                        if vm.selectAlgorithm == "bubble" || vm.selectAlgorithm == "insertion" {
+                            Text(textVm.pseudoCode)
+                                .font(.system(size: 20))
+                                .foregroundColor(Color.white)
+                                .position(x: 195, y: 490)
+                                .frame(width: 500, height: 310)
+                            
+                        } else if vm.selectAlgorithm == "quick" || vm.selectAlgorithm == "radix" {
+                            Text(textVm.pseudoCode)
+                                .font(.system(size: 14))
+                                .foregroundColor(Color.white)
+                                .position(x: 195, y: 490)
+                                .frame(width: 500, height: 300)
+                        }
                         
                     }
-                    
-                
-
+                   
+        
                     
                     
                     ZStack {
@@ -151,7 +134,7 @@ struct ContentView : View {
                             Chart {
                                 ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
                                     LineMark(x: .value("Position", index), y: .value("Value", item))
-                                        .foregroundStyle(cvm.orange) // line graph
+                                        .foregroundStyle(vm.swapColorsTwo(valueTwo: item)) // line graph
                                 }
                                 
                                 
@@ -160,7 +143,7 @@ struct ContentView : View {
                             Chart {
                                 ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
                                     AreaMark(x: .value("Position", index), y: .value("Value", item))
-                                        .foregroundStyle(cvm.orange) // line graph
+                                        .foregroundStyle(vm.swapColorsTwo(valueTwo: item))// line graph
                                 }
                             }
                         }
@@ -181,7 +164,7 @@ struct ContentView : View {
                         }
                     }
                     .foregroundStyle(cvm.orange)
-                    .position(x:208, y: -300)
+                    .position(x:208, y: -180)
                     .frame(width: 360, height: 400)
                     
                     ZStack {
@@ -189,20 +172,24 @@ struct ContentView : View {
                         Text("mill:")
                             .font(.system(size: 12))
                             .foregroundColor(cvm.orange)
-                            .position(x:75, y:440)
-                        Text(
-                            String(format:"%.10f", vm.sliderValue)
-                        )
-                        .font(.system(size: 12))
-                        .foregroundColor(cvm.orange)
-                        .position(x:140, y:440)
-                        Slider(value: $vm.sliderValue, in: 0.9999999999...99.9999999999)
+                            .position(x:107, y:431)
                         
-                            .accentColor(cvm.purple)
-                            .frame(width: 200, height: 10)
-                            .position(x: 215, y: 620)
+                            Text(
+                                String(format:"%.10f", vm.sliderValue)
+                            )
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                            .position(x:170, y:431)
+                
+       
                         
                         
+                            Slider(value: $vm.sliderValue, in: 0.9999999999...99.9999999999)
+                            
+                                .accentColor(cvm.purple)
+                                .frame(width: 200, height: 10)
+                                .position(x: 250, y: 600)
+
                         
                     }
                     
@@ -222,20 +209,34 @@ struct ContentView : View {
                             }
                             vm.algoButtonPressed.toggle()
                         }
-                        .foregroundColor(vm.isSorting ? Color.gray : Color.white)
-                        .disabled(vm.isSorting)
+                        .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white)       .disabled(vm.isSorting || vm.isSwooping)
+
 
                         if vm.expand {
                             
                             // button that triggers bubble sort for the sort button
                             Button(action:  {
-                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
-                                        vm.expand.toggle()
-                                    }
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                    vm.expand.toggle()
+                                }
                                 vm.myTitle = "bubbleSort()"
                                 vm.selectAlgorithm = "bubble"
                                 vm.algoButtonPressed.toggle()
-                                textVm.prompt = " "
+                                textVm.pseudoCode = """
+                                
+                        function bubble_sort()
+                            isSorted = false
+                            n = array
+                            while not isSorted
+                            isSorted = true
+                            
+                                for j in range(0, n-i-1):
+                                if array[j] > array[j+1]:
+                                    swap(i, i + 1)
+                                    isSorted = false
+                        
+                        return array
+"""
                             }) {
                                 Text("bubble sort").padding()
                                     .underline(false)
@@ -253,14 +254,19 @@ struct ContentView : View {
                                 vm.myTitle = "insertionSort()"
                                 vm.selectAlgorithm = "insertion"
                                 vm.algoButtonPressed.toggle()
-                                textVm.prompt = """
- Insertion sort is an algorithm that applies a sorted sub list to an existing unsorted list. This method of sorting takes the first element outside the sorted list; then the algorithm compares the value to all the elements in the sorted list, until it doesn't find an element that is greater than the value that is being compared against.
-
- The time complexity for this algorithm is O(n^2) in the average/worst case, but in the best case can be O(n) if the values are already sorted. The algorithm has to compare every value against the vale that is being swapped -- which gives you O(n^2). Nothing is being stored in memory, so the space complexity is O(1) space.
- 
- Insertion sort isn't the most efficient, although its good for small data sets. Also its worth mentioning that the logic for this algorithm is quite small so its good if you need to whip up a quick sorting algorithm.
- """
-                                
+                                textVm.pseudoCode = """
+                        function insertion_sort(array):
+                        for i in range(1, len(array)):
+                            key = array[i]
+                            j = i-1
+                            
+                        while j >= 0 and array[j] > key:
+                                array[j + 1] = array[j]
+                                j -= 1
+                            array[j + 1] = key
+                        
+                        return array
+"""
 
 
                             }) {
@@ -277,13 +283,62 @@ struct ContentView : View {
                                     vm.expand.toggle()
                                 }
                                 
-                                vm.myTitle = "heapSort()"
-                                vm.selectAlgorithm = "heap"
+                                vm.myTitle = "quickSort()"
+                                vm.selectAlgorithm = "quick"
                                 vm.algoButtonPressed.toggle()
+                                textVm.pseudoCode = """
+                            function quick_sort(arr, start, end):
+                                if start < end:
+                                    pivotIdx = partition(arr, start, end)
+                                    quickSort(arr, start, pivotIdx - 1)
+                                    quickSort(arr, pivotIdx + 1, end)
 
+                            function partition(arr, start, end):
+                                pivot = arr[end]
+                                pivotIdx = start
+                                for i in range(start, end):
+                                    if arr[i] <= pivot:
+                                        arr[i], arr[pivotIdx] = arr[pivotIdx], arr[i]
+                                        pivot_index += 1
+                                arr[end], arr[pivotIdx] = arr[pivotIdx], arr[end]
+                               
+                            return pivotIdx
+"""
 
                             }) {
-                                Text("heap sort").padding()
+                                Text("quick sort").padding()
+                                    .underline(false)
+
+                            } .buttonStyle(.borderless)
+                            .foregroundColor(Color.white)
+                            Button(action: {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                    vm.expand.toggle()
+                                }
+                                
+                                vm.myTitle = "radixSort()"
+                                vm.selectAlgorithm = "radix"
+                                vm.algoButtonPressed.toggle()
+                                textVm.pseudoCode = """
+                            function radixSort(array, radix=10):
+                                max_val = max(array)
+                                max_digits = len(str(max_val))
+                                for i in range(max_digits):
+                                    buckets = [[] for x in range(radix)]
+                                    
+                                    for num in array:
+                                        digit = (num // (radix ** i)) % radix
+                                        buckets[digit].append(num)
+                                    
+                                array = []
+                                for sublist in buckets:
+                                    array.extend(sublist)
+                                
+                            return array
+"""
+
+                            }) {
+                                Text("radix sort").padding()
                                     .underline(false)
 
                             } .buttonStyle(.borderless)
@@ -291,11 +346,11 @@ struct ContentView : View {
                         }
                     })
                     
-                    .frame(height: vm.expand ? 350 : 8)
+                    .frame(height: vm.expand ? 280 : 8)
                     .padding()
                     .background(cvm.purple)
                     .cornerRadius(20)
-                    .position(x: 285, y: 500)
+                    .position(x: 323, y: 480)
                     
                     // buttons to choose between bar, point, and line graph.
                     
@@ -307,7 +362,7 @@ struct ContentView : View {
                             HStack {
                                 
                                 // graph button title
-                                Text("   GRAPHS   ")
+                                Text("    GRAPHS    ")
                                     .font(.system(size: 12))
                                 
                                 Image(systemName: "chart.bar.fill").resizable().frame(width: 20, height: 20)
@@ -316,8 +371,8 @@ struct ContentView : View {
                                     vm.expand2.toggle()
                                 }
                             }
-                            .foregroundColor(vm.isSorting ? Color.gray : Color.white)
-                            .disabled(vm.isSorting)
+                            .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white) .disabled(vm.isSorting || vm.isSwooping)
+
                             
                             
                             if vm.expand2 {
@@ -395,11 +450,11 @@ struct ContentView : View {
                             }
                         })
                         
-                        .frame(height: vm.expand2 ? 300 : 8)
+                        .frame(height: vm.expand2 ? 280 : 8)
                         .padding()
                         .background(cvm.purple)
                         .cornerRadius(20)
-                        .position(x: 285, y: 560)
+                        .position(x: 323, y: 540)
                     }
                     ZStack {
                         
@@ -412,33 +467,25 @@ struct ContentView : View {
                                 if vm.selectAlgorithm == "bubble" {
                                     
                                     try await vm.bubbleSort()
+                                    try await vm.swooping()
                                     
-                                    
-                                    
-                                    if vm.selectGraph != ".area" {
-                                        vm.activeValue = 0
-                                        vm.previousValue = 0
-                                        for index in  0..<vm.data.count {
-                                            vm.swoop = vm.data[index]
-                                            try await Task.sleep(until: .now.advanced(by: .milliseconds(vm.sliderValue)), clock: .continuous)
-                                        }
-                                
-                                    }
                                 } else if vm.selectAlgorithm == "insertion" {
                                     
                                     try await vm.insertionSort()
-                                    vm.activeValue = 0
-                                    vm.previousValue = 0
+                                    try await vm.swooping()
                                     
-                                    for index in  0..<vm.data.count {
-                                        vm.swoop = vm.data[index]
-                                        try await Task.sleep(until: .now.advanced(by: .milliseconds(vm.sliderValue)), clock: .continuous)
-                                    }
+                                } else if vm.selectAlgorithm == "quick" {
+                                    
+                                    try await vm.quickSort()
+                                    try await vm.swooping()
+                                    
+                                } else if vm.selectAlgorithm == "radix" {
+                                    
+                                    try await vm.radixSort()
+                                    try await vm.swooping()
                                 }
                             }
-                            
                         }
-                        
                     label: {
                         Text("SORT     ")
                             .font(.system(size: 12))
@@ -447,13 +494,14 @@ struct ContentView : View {
                             .resizable().frame(width: 15, height: 15)
                     }
                         
-                    .disabled(vm.isSorting)
-                    .frame(width: 120, height: 37)
-                    .foregroundColor(vm.isSorting ? Color.gray : Color.white)
+                    .disabled(vm.isSorting || vm.isSwooping)
+                        
+                    .frame(width: 130, height: 37)
+                    .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white)
                     .buttonStyle(.borderless)
                     .background(cvm.purple)
                     .cornerRadius(20)
-                    .position(x: 140, y: 500)
+                    .position(x: 175, y: 480)
                         
                         // reset button that shuffles the data variable
                         Button {
@@ -475,13 +523,12 @@ struct ContentView : View {
                             .resizable().frame(width: 20, height: 20)
                     }
                         
-                    .disabled(vm.isSorting)
-                    .frame(width: 120, height: 37)
-                    .foregroundColor(vm.isSorting ? Color.gray : Color.white)
-                    .buttonStyle(.borderless)
+                    .disabled(vm.isSorting || vm.isSwooping)
+                    .frame(width: 130, height: 38)
+                    .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white)        .buttonStyle(.borderless)
                     .background(cvm.purple)
                     .cornerRadius(20)
-                    .position(x: 140, y: 560)
+                    .position(x: 175, y: 540)
                         
                         
                         // button for that displays different space time complexity's based on the algorithm chosen
@@ -559,7 +606,7 @@ struct ContentView : View {
                                     .frame(width: 300.0, height: 20.0)
                                     .position(x: -170, y: 160)
                             }
-
+                            
                         }
                             
                             
@@ -569,15 +616,15 @@ struct ContentView : View {
                         .buttonStyle(.borderless)
                         .background(cvm.purple)
                         .cornerRadius(20)
-                        .position(x: 215, y: 800)
-                        } else if vm.selectAlgorithm == "heap" { Button {
+                        .position(x: 250, y: 775)
+                        } else if vm.selectAlgorithm == "quick" { Button {
                             
                             withAnimation(Animation.spring()) {
                                 vm.expand3.toggle()
                                 vm.showGraph = 1
                                 vm.toggleGraph.toggle()
                             }
-                                
+                            
                         }
                             
                         label: {
@@ -631,13 +678,150 @@ struct ContentView : View {
                                 .position(x: -170, y: 160)
                             
                         }
-                                .frame(width: 280)
-                                .frame(height: vm.expand3 ? 300 : 45)
+                        .frame(width: 280)
+                        .frame(height: vm.expand3 ? 300 : 45)
+                        .foregroundColor(Color.white)
+                        .buttonStyle(.borderless)
+                        .background(cvm.purple)
+                        .cornerRadius(20)
+                        .position(x: 250, y: 775)
+                            
+                        } else if vm.selectAlgorithm == "quick" { Button {
+                            
+                            withAnimation(Animation.spring()) {
+                                vm.expand3.toggle()
+                                vm.showGraph = 1
+                                vm.toggleGraph.toggle()
+                            }
+                            
+                        }
+                            
+                        label: {
+                            Text("O(nlog(n)) Time | O(1) Space")
+                                .font(.system(size: 17))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: 136, y: 20)
+                                .underline(false)
+                            
+                            RoundedRectangle(cornerRadius: 100)
+                                .frame(width: 50, height: 2)
+                                .foregroundColor(cvm.blurredPurple)
+                                .position(x: vm.expand3 ? 115 : 115, y: vm.expand3 ? 290 : 39 )
+                            Rectangle()
+                                .frame(width: 3, height: 200)
                                 .foregroundColor(Color.white)
-                                .buttonStyle(.borderless)
-                                .background(cvm.purple)
-                                .cornerRadius(20)
-                                .position(x: 215, y: 800)
+                                .position(x: -30, y: 170)
+                            Text("TIME")
+                                .underline(false)
+                                .font(.system(size: 10))
+                                .rotationEffect(.degrees(270))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -70, y: 85)
+                            Rectangle()
+                                .frame(width: 238, height: 3)
+                                .foregroundColor(Color.white)
+                                .position(x: 30, y: 270)
+                            Text("SPACE")
+                                .underline(false)
+                                .font(.system(size: 10))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: 95, y: 280)
+                            Rectangle()
+                                .frame(width: 238, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -28, y: 260)
+                            Text("O(1)")
+                                .underline(false)
+                                .font(.system(size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -45, y: 250)
+                            Rectangle()
+                                .rotationEffect(.degrees(145))
+                                .frame(width: 270, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -94, y: 182)
+                            Text("O(nlog(n))")
+                                .underline(false)
+                                .font(.system(size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -170, y: 160)
+                            
+                        }
+                        .frame(width: 280)
+                        .frame(height: vm.expand3 ? 300 : 45)
+                        .foregroundColor(Color.white)
+                        .buttonStyle(.borderless)
+                        .background(cvm.purple)
+                        .cornerRadius(20)
+                        .position(x: 250, y: 775)
+                        }   else if vm.selectAlgorithm == "radix" { Button {
+                            
+                            withAnimation(Animation.spring()) {
+                                vm.expand3.toggle()
+                                vm.showGraph = 1
+                                vm.toggleGraph.toggle()
+                            }
+                            
+                        }
+                            
+                        label: {
+                            Text("O(d * (n + b)) Time | O(n + b) Space")
+                                .font(.system(size: 14))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: 136, y: 20)
+                                .underline(false)
+                            
+                            RoundedRectangle(cornerRadius: 100)
+                                .frame(width: 50, height: 2)
+                                .foregroundColor(cvm.blurredPurple)
+                                .position(x: vm.expand3 ? 115 : 115, y: vm.expand3 ? 290 : 39 )
+                            Rectangle()
+                                .frame(width: 3, height: 200)
+                                .foregroundColor(Color.white)
+                                .position(x: -30, y: 170)
+                            Text("TIME")
+                                .underline(false)
+                                .font(.system(size: 10))
+                                .rotationEffect(.degrees(270))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -70, y: 85)
+                            Rectangle()
+                                .frame(width: 238, height: 3)
+                                .foregroundColor(Color.white)
+                                .position(x: 30, y: 270)
+                            Text("SPACE")
+                                .underline(false)
+                                .font(.system(size: 10))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: 95, y: 280)
+                            Rectangle()
+                                .frame(width: 238, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -28, y: 260)
+                            Text("O(1)")
+                                .underline(false)
+                                .font(.system(size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -45, y: 250)
+                            Rectangle()
+                                .rotationEffect(.degrees(145))
+                                .frame(width: 270, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -94, y: 182)
+                            Text("O(nlog(n))")
+                                .underline(false)
+                                .font(.system(size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -170, y: 160)
+                            
+                        }
+                        .frame(width: 280)
+                        .frame(height: vm.expand3 ? 300 : 45)
+                        .foregroundColor(Color.white)
+                        .buttonStyle(.borderless)
+                        .background(cvm.purple)
+                        .cornerRadius(20)
+                        .position(x: 250, y: 775)
                             
                         }
                     }
@@ -647,7 +831,7 @@ struct ContentView : View {
             // length of the scroll view
             .frame(maxHeight: .infinity)
         }
-        .frame(minWidth: 430, maxWidth: 430, minHeight: 1450, maxHeight: 1450)
+        .frame(minWidth: 430, maxWidth: 430, minHeight: 1200, maxHeight: 1200)
     }
 
         .background(LinearGradient (
@@ -660,7 +844,7 @@ struct ContentView : View {
             
             
             .onAppear {
-                vm.data = input
+                vm.data = vm.generateInput()
             }
     }
 
