@@ -4,7 +4,7 @@
 //
 //  Created by Elliot Rapp on 1/18/23.
 //
-
+import Foundation
 import SwiftUI
 import Charts
 
@@ -59,11 +59,16 @@ struct ContentView : View {
                         
                         .foregroundColor(cvm.graphBackground)
                         .frame(width: 350, height: 400)
-                        .position(x: 250, y: 930)
+                        .position(x: 250, y: 950)
+                    
                     
                     ZStack {
-                        
-                        
+                                
+                        Image(systemName: "line.3.horizontal.decrease").resizable().frame(width:50, height: 20)
+                            .foregroundColor(cvm.dragDownMenu)
+                        .position(x: 250, y: 710)
+                                
+                            
                         
                         
                         // Algorithm title
@@ -71,42 +76,98 @@ struct ContentView : View {
                             .font(.title2)
                             .fontWeight(.heavy)
                             .foregroundColor(cvm.orange)
-                            .position(x: 210, y: 20)
+                            .position(x: 250, y: 20)
                         
                         
-                        // graph chosen
-                        Text(vm.graphMark)
+                        if vm.selectGraph == ".bar" ||
+                            vm.selectGraph == ".line" ||
+                            vm.selectGraph == ".area" {
+                            Text(vm.graphMark)
+                                .font(.system(size: 12))
+                                .foregroundColor(cvm.orange)
+                                .position(x: 215, y: 431)
+                        } else if vm.selectGraph == ".point" {
+                            Text(vm.graphMark)
+                                .font(.system(size: 12))
+                                .foregroundColor(cvm.orange)
+                                .position(x: 210, y: 431)
+                        }
+                        Text("\(vm.nodes)")
+                        .font(.system(size: 12))
+                        .foregroundColor(cvm.orange)
+                        .position(x: 248, y: 431)
+                        
+                        
+                        
+                        Text(vm.whileCount)
                             .font(.system(size: 12))
                             .foregroundColor(cvm.orange)
-                            .position(x: 242, y: 431)
+                            .position(x: 290, y: 431)
                         
-                        // Algorithm title
-                        Text(vm.myTitle)
-                            .font(.title2)
-                            .fontWeight(.heavy)
+                        Text("\(vm.whileCountCounter)")
+                        .font(.system(size: 12))
+                        .foregroundColor(cvm.orange)
+                        .position(x: 328, y: 431)
+                        
+                        Text(vm.forCount)
+                            .font(.system(size: 12))
                             .foregroundColor(cvm.orange)
-                            .position(x: 210, y: 20)
+                            .position(x: 360, y: 431)
+                        
+                        Text("\(vm.forCountCounter)")
+                        .font(.system(size: 12))
+                        .foregroundColor(cvm.orange)
+                        .position(x: 394, y: 431)
                         
                         // Algorithm pseudo code
                         if vm.selectAlgorithm == "bubble" || vm.selectAlgorithm == "insertion" {
                             Text(textVm.pseudoCode)
                                 .font(.system(size: 20))
                                 .foregroundColor(Color.white)
-                                .position(x: 195, y: 490)
+                                .position(x: 195, y: 530)
                                 .frame(width: 500, height: 310)
                             
                         } else if vm.selectAlgorithm == "quick" || vm.selectAlgorithm == "radix" {
                             Text(textVm.pseudoCode)
-                                .font(.system(size: 14))
+                                .font(.system(size: 13))
                                 .foregroundColor(Color.white)
-                                .position(x: 195, y: 490)
+                                .position(x: 205, y: 520)
                                 .frame(width: 500, height: 300)
                         }
                         
                     }
                    
         
+        
                     
+                    
+                    
+                    
+                    ZStack {
+                        // slider with milliseconds
+                        Text("mill:")
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                            .position(x:107, y:431)
+                        
+                            Text(
+                                String(format:"%.6f", vm.sliderValue)
+                            )
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                            .position(x:158, y:431)
+                
+       
+                        
+                        
+                            Slider(value: $vm.sliderValue, in: 0.9999999999...99.9999999999)
+                            
+                                .accentColor(cvm.purple)
+                                .frame(width: 120, height: 10)
+                                .position(x: 180, y: 600)
+
+                        
+                    }
                     
                     ZStack {
                         
@@ -116,7 +177,7 @@ struct ContentView : View {
                             Chart {
                                 ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
                                     BarMark(x: .value("Position", index), y: .value("Value", item))
-                                        .foregroundStyle(vm.swapColors(value: item)) // bar graph
+                                        .foregroundStyle(vm.swapColors(value: item))
                                     
                                 }
                                 
@@ -164,36 +225,8 @@ struct ContentView : View {
                         }
                     }
                     .foregroundStyle(cvm.orange)
-                    .position(x:208, y: -180)
-                    .frame(width: 360, height: 400)
-                    
-                    ZStack {
-                        // slider with milliseconds
-                        Text("mill:")
-                            .font(.system(size: 12))
-                            .foregroundColor(cvm.orange)
-                            .position(x:107, y:431)
-                        
-                            Text(
-                                String(format:"%.10f", vm.sliderValue)
-                            )
-                            .font(.system(size: 12))
-                            .foregroundColor(cvm.orange)
-                            .position(x:170, y:431)
-                
-       
-                        
-                        
-                            Slider(value: $vm.sliderValue, in: 0.9999999999...99.9999999999)
-                            
-                                .accentColor(cvm.purple)
-                                .frame(width: 200, height: 10)
-                                .position(x: 250, y: 600)
-
-                        
-                    }
-                    
-                                          
+                    .position(x: vm.nodes < 35 ? 180 : 207, y: -180)
+                    .frame(width: vm.nodes < 35 ? 330 : 360, height: vm.nodes < 35 ? 340 : 405)
                     
                     VStack(alignment: .leading, content:  {
                         
@@ -223,19 +256,18 @@ struct ContentView : View {
                                 vm.selectAlgorithm = "bubble"
                                 vm.algoButtonPressed.toggle()
                                 textVm.pseudoCode = """
-                                
-                        function bubble_sort()
-                            isSorted = false
-                            n = array
-                            while not isSorted
-                            isSorted = true
+                        function  bubble_sort()
+                            isSorted  =  false
+                            n  =  array
+                            while  not  isSorted
+                            isSorted  =  true
                             
-                                for j in range(0, n-i-1):
-                                if array[j] > array[j+1]:
-                                    swap(i, i + 1)
-                                    isSorted = false
+                                for  j  in  range(0,  n-i-1):
+                                if  array[j]  >  array[j+1]:
+                                    swap(i,  i +  1)
+                                    isSorted  =  false
                         
-                        return array
+                                return  array
 """
                             }) {
                                 Text("bubble sort").padding()
@@ -255,17 +287,17 @@ struct ContentView : View {
                                 vm.selectAlgorithm = "insertion"
                                 vm.algoButtonPressed.toggle()
                                 textVm.pseudoCode = """
-                        function insertion_sort(array):
-                        for i in range(1, len(array)):
-                            key = array[i]
-                            j = i-1
+                        function  insertion_sort(array):
+                        for  i  in range(len(array)):
+                            key  =  array[i]
+                            j  =  i-1
                             
-                        while j >= 0 and array[j] > key:
-                                array[j + 1] = array[j]
-                                j -= 1
-                            array[j + 1] = key
+                        while  j  >=  0  and  array[j]  >  key:
+                                array[j  +  1]  =  array[j]
+                                j  -=  1
+                            array[j  +  1]  =  key
                         
-                        return array
+                            return  array
 """
 
 
@@ -287,22 +319,23 @@ struct ContentView : View {
                                 vm.selectAlgorithm = "quick"
                                 vm.algoButtonPressed.toggle()
                                 textVm.pseudoCode = """
-                            function quick_sort(arr, start, end):
-                                if start < end:
-                                    pivotIdx = partition(arr, start, end)
-                                    quickSort(arr, start, pivotIdx - 1)
-                                    quickSort(arr, pivotIdx + 1, end)
+                        function quickSort(array, start, end):
+                            if start < end:
+                            pivotIndex = partition(array, start, end)
+                            quickSort(array, start, pivotIndex - 1)
+                            quickSkort(array, pivotIndex + 1, end)
+    
+                        function partition(array, start, end):
+                            pivot = array[end]
+                            i = start - 1
+                            while start <= end:
+                            if array[j] <= pivot:
+                                    i += 1
+                                    array[i], array[j] = array[j], array[i]
+                            array[i + 1], array[end] = array[end], array[i + 1]
+                           
+                            return i + 1
 
-                            function partition(arr, start, end):
-                                pivot = arr[end]
-                                pivotIdx = start
-                                for i in range(start, end):
-                                    if arr[i] <= pivot:
-                                        arr[i], arr[pivotIdx] = arr[pivotIdx], arr[i]
-                                        pivot_index += 1
-                                arr[end], arr[pivotIdx] = arr[pivotIdx], arr[end]
-                               
-                            return pivotIdx
 """
 
                             }) {
@@ -311,42 +344,10 @@ struct ContentView : View {
 
                             } .buttonStyle(.borderless)
                             .foregroundColor(Color.white)
-                            Button(action: {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
-                                    vm.expand.toggle()
-                                }
-                                
-                                vm.myTitle = "radixSort()"
-                                vm.selectAlgorithm = "radix"
-                                vm.algoButtonPressed.toggle()
-                                textVm.pseudoCode = """
-                            function radixSort(array, radix=10):
-                                max_val = max(array)
-                                max_digits = len(str(max_val))
-                                for i in range(max_digits):
-                                    buckets = [[] for x in range(radix)]
-                                    
-                                    for num in array:
-                                        digit = (num // (radix ** i)) % radix
-                                        buckets[digit].append(num)
-                                    
-                                array = []
-                                for sublist in buckets:
-                                    array.extend(sublist)
-                                
-                            return array
-"""
-
-                            }) {
-                                Text("radix sort").padding()
-                                    .underline(false)
-
-                            } .buttonStyle(.borderless)
-                            .foregroundColor(Color.white)
                         }
                     })
                     
-                    .frame(height: vm.expand ? 280 : 8)
+                    .frame(height: vm.expand ? 250 : 8)
                     .padding()
                     .background(cvm.purple)
                     .cornerRadius(20)
@@ -383,7 +384,7 @@ struct ContentView : View {
                                         vm.expand2.toggle()
                                     }
                                     
-                                    vm.graphMark = "|  .bar"
+                                    vm.graphMark = "|   bar:"
                                     vm.selectGraph = ".bar"
                                     
                                     
@@ -401,7 +402,7 @@ struct ContentView : View {
                                     withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
                                         vm.expand2.toggle()
                                     }
-                                    vm.graphMark = "    |  .point"
+                                    vm.graphMark = "    |  point:"
                                     vm.selectGraph = ".point"
                                     
                                     
@@ -419,7 +420,7 @@ struct ContentView : View {
                                         vm.expand2.toggle()
                                     }
                                     
-                                    vm.graphMark = "|  .line"
+                                    vm.graphMark = "|   line:"
                                     vm.selectGraph = ".line"
                                     
                                     
@@ -436,7 +437,7 @@ struct ContentView : View {
                                         vm.expand2.toggle()
                                     }
                                     
-                                    vm.graphMark = "|  .area"
+                                    vm.graphMark = "|   area:"
                                     vm.selectGraph = ".area"
                                     
                                     
@@ -456,6 +457,80 @@ struct ContentView : View {
                         .cornerRadius(20)
                         .position(x: 323, y: 540)
                     }
+                    
+                    if vm.expand2 == false && vm.expand == false {
+                        
+                        VStack(alignment: .leading, content:  {
+                            
+                            
+                            
+                            HStack {
+                                
+                                // graph button title
+                                Text("    NODES    ")
+                                    .font(.system(size: 12))
+                                
+                                Image(systemName: "point.3.connected.trianglepath.dotted").resizable().frame(width: 20, height: 20)
+                            }.onTapGesture {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                    vm.expand4.toggle()
+                                }
+                            }
+                            .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white) .disabled(vm.isSorting || vm.isSwooping)
+                            
+                            
+                            
+                            if vm.expand4 {
+                                
+                                // button for bar graph
+                                Button(action:  {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                        vm.expand4.toggle()
+                                    }
+                                    
+                                    vm.nodes = 10
+                                    vm.data = vm.generateInput()
+                                    
+                                    
+                                })
+                                {
+                                    Text("10 nodes").padding()
+                                        .underline(false)
+                                    
+                                }
+                                .buttonStyle(.borderless)
+                                .foregroundColor(Color.white)
+                                
+                                // button for point graph
+                                Button(action: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                        vm.expand4.toggle()
+                                    }
+                                    vm.nodes = 35
+                                    vm.data = vm.generateInput()
+
+                                    
+                                    
+                                }) {
+                                    Text("35 nodes").padding()
+                                        .underline(false)
+                                    
+                                }
+                                .buttonStyle(.borderless)
+                                .foregroundColor(Color.white)
+                                
+                            
+                                
+                            }
+                        })
+                        
+                        .frame(height: vm.expand4 ? 140 : 8)
+                        .padding()
+                        .background(cvm.purple)
+                        .cornerRadius(20)
+                        .position(x: 323, y: 600)
+                    }
+                        
                     ZStack {
                         
                         // SORT button
@@ -479,10 +554,6 @@ struct ContentView : View {
                                     try await vm.quickSort()
                                     try await vm.swooping()
                                     
-                                } else if vm.selectAlgorithm == "radix" {
-                                    
-                                    try await vm.radixSort()
-                                    try await vm.swooping()
                                 }
                             }
                         }
@@ -494,7 +565,7 @@ struct ContentView : View {
                             .resizable().frame(width: 15, height: 15)
                     }
                         
-                    .disabled(vm.isSorting || vm.isSwooping)
+                    .disabled(vm.isSorting || vm.sortComplete || vm.isSwooping )
                         
                     .frame(width: 130, height: 37)
                     .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white)
@@ -508,8 +579,9 @@ struct ContentView : View {
                             
                             
                             Task {
-                                vm.data.shuffle()
-                                vm.swoop = 0
+                                
+                                
+                                try await vm.fisherYatesShuffle()
                                 
                             }
                         }
@@ -616,7 +688,7 @@ struct ContentView : View {
                         .buttonStyle(.borderless)
                         .background(cvm.purple)
                         .cornerRadius(20)
-                        .position(x: 250, y: 775)
+                        .position(x: 250, y: 795)
                         } else if vm.selectAlgorithm == "quick" { Button {
                             
                             withAnimation(Animation.spring()) {
@@ -627,206 +699,78 @@ struct ContentView : View {
                             
                         }
                             
+                        
                         label: {
+                            
+                            Text("(AVRAGE CASE)")
+                                .font(.system(size: 7))
+                                .frame(width: 100.0, height: 20.0)
+                                .position(x: 136, y: 8)
+                                .underline(false)
+                            
                             Text("O(nlog(n)) Time | O(1) Space")
                                 .font(.system(size: 17))
                                 .frame(width: 300.0, height: 20.0)
-                                .position(x: 136, y: 20)
+                                .position(x: 90, y: 23)
                                 .underline(false)
                             
                             RoundedRectangle(cornerRadius: 100)
-                                .frame(width: 50, height: 2)
+                                .frame(width: 50, height: 4)
                                 .foregroundColor(cvm.blurredPurple)
-                                .position(x: vm.expand3 ? 115 : 115, y: vm.expand3 ? 290 : 39 )
+                                .position(x: vm.expand3 ? 50 : 50, y: vm.expand3 ? 290 : 39 )
                             Rectangle()
                                 .frame(width: 3, height: 200)
                                 .foregroundColor(Color.white)
-                                .position(x: -30, y: 170)
+                                .position(x: -120, y: 170)
                             Text("TIME")
                                 .underline(false)
                                 .font(.system(size: 10))
                                 .rotationEffect(.degrees(270))
                                 .frame(width: 300.0, height: 20.0)
-                                .position(x: -70, y: 85)
-                            Rectangle()
-                                .frame(width: 238, height: 3)
-                                .foregroundColor(Color.white)
-                                .position(x: 30, y: 270)
-                            Text("SPACE")
-                                .underline(false)
-                                .font(.system(size: 10))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: 95, y: 280)
-                            Rectangle()
-                                .frame(width: 238, height: 1)
-                                .foregroundColor(Color.white)
-                                .position(x: -28, y: 260)
-                            Text("O(1)")
-                                .underline(false)
-                                .font(.system(size: 12))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -45, y: 250)
-                            Rectangle()
-                                .rotationEffect(.degrees(145))
-                                .frame(width: 270, height: 1)
-                                .foregroundColor(Color.white)
-                                .position(x: -94, y: 182)
-                            Text("O(nlog(n))")
-                                .underline(false)
-                                .font(.system(size: 12))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -170, y: 160)
-                            
-                        }
-                        .frame(width: 280)
-                        .frame(height: vm.expand3 ? 300 : 45)
-                        .foregroundColor(Color.white)
-                        .buttonStyle(.borderless)
-                        .background(cvm.purple)
-                        .cornerRadius(20)
-                        .position(x: 250, y: 775)
-                            
-                        } else if vm.selectAlgorithm == "quick" { Button {
-                            
-                            withAnimation(Animation.spring()) {
-                                vm.expand3.toggle()
-                                vm.showGraph = 1
-                                vm.toggleGraph.toggle()
+                                .position(x: -178, y: 85)
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 238, height: 3)
+                                    .foregroundColor(Color.white)
+                                    .position(x: -98, y: 270)
+                                Text("SPACE")
+                                    .underline(false)
+                                    .font(.system(size: 10))
+                                    .frame(width: 300.0, height: 20.0)
+                                    .position(x: 2, y: 280)
+                                Rectangle()
+                                    .frame(width: 238, height: 1)
+                                    .foregroundColor(Color.white)
+                                    .position(x: -98, y: 260)
+                                Text("O(1)")
+                                    .underline(false)
+                                    .font(.system(size: 12))
+                                    .frame(width: 300.0, height: 20.0)
+                                    .position(x: -30, y: 250)
+                                Rectangle()
+                                    .rotationEffect(.degrees(145))
+                                    .frame(width: 270, height: 1)
+                                    .foregroundColor(Color.white)
+                                    .position(x: -105, y: 182)
+                                Text("O(nlog(n))")
+                                    .underline(false)
+                                    .font(.system(size: 12))
+                                    .frame(width: 300.0, height: 20.0)
+                                    .position(x: -130, y: 160)
+                                
+                                }
                             }
-                            
-                        }
-                            
-                        label: {
-                            Text("O(nlog(n)) Time | O(1) Space")
-                                .font(.system(size: 17))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: 136, y: 20)
-                                .underline(false)
-                            
-                            RoundedRectangle(cornerRadius: 100)
-                                .frame(width: 50, height: 2)
-                                .foregroundColor(cvm.blurredPurple)
-                                .position(x: vm.expand3 ? 115 : 115, y: vm.expand3 ? 290 : 39 )
-                            Rectangle()
-                                .frame(width: 3, height: 200)
-                                .foregroundColor(Color.white)
-                                .position(x: -30, y: 170)
-                            Text("TIME")
-                                .underline(false)
-                                .font(.system(size: 10))
-                                .rotationEffect(.degrees(270))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -70, y: 85)
-                            Rectangle()
-                                .frame(width: 238, height: 3)
-                                .foregroundColor(Color.white)
-                                .position(x: 30, y: 270)
-                            Text("SPACE")
-                                .underline(false)
-                                .font(.system(size: 10))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: 95, y: 280)
-                            Rectangle()
-                                .frame(width: 238, height: 1)
-                                .foregroundColor(Color.white)
-                                .position(x: -28, y: 260)
-                            Text("O(1)")
-                                .underline(false)
-                                .font(.system(size: 12))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -45, y: 250)
-                            Rectangle()
-                                .rotationEffect(.degrees(145))
-                                .frame(width: 270, height: 1)
-                                .foregroundColor(Color.white)
-                                .position(x: -94, y: 182)
-                            Text("O(nlog(n))")
-                                .underline(false)
-                                .font(.system(size: 12))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -170, y: 160)
-                            
-                        }
                         .frame(width: 280)
                         .frame(height: vm.expand3 ? 300 : 45)
                         .foregroundColor(Color.white)
                         .buttonStyle(.borderless)
                         .background(cvm.purple)
                         .cornerRadius(20)
-                        .position(x: 250, y: 775)
-                        }   else if vm.selectAlgorithm == "radix" { Button {
+                        .position(x: 250, y: 795)
                             
-                            withAnimation(Animation.spring()) {
-                                vm.expand3.toggle()
-                                vm.showGraph = 1
-                                vm.toggleGraph.toggle()
-                            }
-                            
-                        }
-                            
-                        label: {
-                            Text("O(d * (n + b)) Time | O(n + b) Space")
-                                .font(.system(size: 14))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: 136, y: 20)
-                                .underline(false)
-                            
-                            RoundedRectangle(cornerRadius: 100)
-                                .frame(width: 50, height: 2)
-                                .foregroundColor(cvm.blurredPurple)
-                                .position(x: vm.expand3 ? 115 : 115, y: vm.expand3 ? 290 : 39 )
-                            Rectangle()
-                                .frame(width: 3, height: 200)
-                                .foregroundColor(Color.white)
-                                .position(x: -30, y: 170)
-                            Text("TIME")
-                                .underline(false)
-                                .font(.system(size: 10))
-                                .rotationEffect(.degrees(270))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -70, y: 85)
-                            Rectangle()
-                                .frame(width: 238, height: 3)
-                                .foregroundColor(Color.white)
-                                .position(x: 30, y: 270)
-                            Text("SPACE")
-                                .underline(false)
-                                .font(.system(size: 10))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: 95, y: 280)
-                            Rectangle()
-                                .frame(width: 238, height: 1)
-                                .foregroundColor(Color.white)
-                                .position(x: -28, y: 260)
-                            Text("O(1)")
-                                .underline(false)
-                                .font(.system(size: 12))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -45, y: 250)
-                            Rectangle()
-                                .rotationEffect(.degrees(145))
-                                .frame(width: 270, height: 1)
-                                .foregroundColor(Color.white)
-                                .position(x: -94, y: 182)
-                            Text("O(nlog(n))")
-                                .underline(false)
-                                .font(.system(size: 12))
-                                .frame(width: 300.0, height: 20.0)
-                                .position(x: -170, y: 160)
-                            
-                        }
-                        .frame(width: 280)
-                        .frame(height: vm.expand3 ? 300 : 45)
-                        .foregroundColor(Color.white)
-                        .buttonStyle(.borderless)
-                        .background(cvm.purple)
-                        .cornerRadius(20)
-                        .position(x: 250, y: 775)
-                            
+        
                         }
                     }
-                    
-     
             }
             // length of the scroll view
             .frame(maxHeight: .infinity)

@@ -5,6 +5,7 @@ import SwiftUI
 
 class ColorViewModel: ObservableObject {
     
+    @Published var dragDownMenu = Color(red: 45 / 255, green: 35 / 255, blue: 75 / 255)
     @Published var blue = Color(red: 21 / 255, green: 6 / 255, blue: 75 / 255)
     @Published var graphBackground = Color(red: 6 / 255, green: 1 / 255, blue: 40 / 255)
     @Published var controlBackgroundBlue = Color(red: 6 / 255, green: 1 / 255, blue: 65 / 255)

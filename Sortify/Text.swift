@@ -11,7 +11,6 @@ class TextViewModel: ObservableObject {
 
 
     @Published var pseudoCode: String = """
-
                         function bubble_sort()
                             isSorted = false
                             n = array
@@ -22,6 +21,7 @@ class TextViewModel: ObservableObject {
                                 if array[j] > array[j+1]:
                                     swap(i, i + 1)
                                     isSorted = false
+                        
                         return array
 """
     

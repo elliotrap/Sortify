@@ -1,3 +1,4 @@
+
 import Foundation
 import SwiftUI
 
@@ -6,37 +7,43 @@ class SortifyViewModel: ObservableObject {
     @ObservedObject var cvm = ColorViewModel()
     
     @Published var algoButtonPressed = false
+    @Published var expand4 = false
     @Published var expand3 = false
     @Published var expand2 = false
     @Published var expand = false
     
     @Published var data = [Int]()
-    
-    
-    @Published var resetTime: Double = 0
+    @Published var nodes = 35
+
     @Published var sliderValue: Double = 49.9999999999
-    @Published var slowSliderValue: Double = 0.5000000000
-    
+
+    @Published var sortComplete = false
     @Published var isSorting = false
     @Published var pivot = 0
     @Published var activeValue = 0
     @Published var previousValue = 0
     @Published var swoop: Int?
+    @Published var shuffle: Int?
     @Published var isSwooping = false
     
-    @Published var animationAmount: CGFloat = 1
+
     @Published var toggleGraph = false
     @Published var showGraph = 0
     @Published var selectAlgorithm = "bubble"
     @Published var selectGraph = ".bar"
     @Published var myTitle: String = "bubbleSort()"
-    @Published var graphMark: String = "|  .bar"
-    @Published var bubbleSortPrompt: String = "Prompt"
-    
+    @Published var graphMark: String = "|   bar:"
+    @Published var nodeCount: String = "|   nodes:"
+    @Published var whileCount: String = "|   while:"
+    @Published var forCountCounter: Int = 0
+    @Published var forCount: String = "|   for:"
+    @Published var whileCountCounter: Int = 0
+
     func swooping() async throws {
         
         if selectGraph == ".bar" || selectGraph == ".point" {
             isSwooping = true
+            
             
             pivot = 0
             activeValue = 0
@@ -57,8 +64,10 @@ class SortifyViewModel: ObservableObject {
                 swoop = data[index]
             }
         }
-        
     }
+    
+    
+
     
     
     func swapColors(value: Int) -> Color {
@@ -87,24 +96,55 @@ class SortifyViewModel: ObservableObject {
         data[firstIndex] = temp
     }
     
-    func generateInput() -> [Int] {
+    func generateInput() -> [Int]  {
         var array = [Int]()
-        for i in 1...35{
+        for i in 1...nodes {
             array.append(i)
         }
+
         return array.shuffled()
-        
+    }
+    func graphSize() {
+        var frameHeight: CGFloat {
+            if nodes <= 10 {
+                return 100
+            } else {
+                return 200
+            }
+        }
     }
     
+    func fisherYatesShuffle() async throws {
+        swoop = 0
+        forCountCounter = 0
+        whileCountCounter = 0
+        sortComplete = false
+        for i in (0..<data.count).reversed() {
+            let j = Int(arc4random_uniform(UInt32(i + 1)))
+            if i != j {
+                activeValue = data[i]
+                previousValue = data[j]
+                try await Task.sleep(until: .now.advanced(by: .milliseconds(10)), clock: .continuous)
+                data.swapAt(i, j)
+                
+            }
+        }
+        activeValue = 0
+        previousValue = 0
+    }
+
+    
     func bubbleSort() async throws {
-        self.isSorting = true
+        isSorting = true
         var isSorted = false
         var counter = 0
         
         
         while !isSorted {
+            whileCountCounter += 1
             isSorted = true
             for i in 0 ..< data.count - 1 - counter {
+                forCountCounter += 1
                 activeValue = data[i + 1]
                 previousValue = data[i]
                 if data[i] > data[i + 1] {
@@ -119,25 +159,29 @@ class SortifyViewModel: ObservableObject {
             
             
         }
-        self.isSorting = false
+        isSorting = false
+        sortComplete = true
     }
     
     func insertionSort() async throws   {
-        self.isSorting = true
+        isSorting = true
         
         for i in 1 ..< data.count {
+            forCountCounter += 1
             var j = i
             previousValue = data[i]
             activeValue = data[i - 1]
             while j > 0, data[j] < data[j - 1] {
+                whileCountCounter += 1
                 swapHelper(j, j - 1)
                 try await Task.sleep(until: .now.advanced(by: .milliseconds(sliderValue * 10)), clock: .continuous)
                 
                 j = j - 1
             }
         }
-        self.isSorting = false
-        
+        isSorting = false
+        sortComplete = true
+
     }
     
     func  quickSort() async throws {
@@ -160,7 +204,7 @@ class SortifyViewModel: ObservableObject {
         
         
         while firstIndex <= secondIndex {
-            
+            whileCountCounter += 1
             pivot = data[pivotIndex]
             previousValue = data[firstIndex]
             activeValue = data[secondIndex - 1]
@@ -179,53 +223,11 @@ class SortifyViewModel: ObservableObject {
         
         try await quickSortHelper(startIndex, secondIndex - 1)
         try await quickSortHelper(secondIndex + 1, endIndex)
-        
-        
-        
-        
-    }
-    
-    
-    func radixSort() async throws  {
-        guard data.count > 1 else {
-            return
-        }
-        
-        let radix = 10
-        var done = false
-        var digits = 1
-        
-        var newArray = data
-        
-        while !done {
-            done = true
-            var buckets: [[Int]] = []
-            
-            for _ in 1...radix {
-                buckets.append([])
-            }
-            
-            for number in newArray {
-                let remainingPart = number / digits
-                let bucket = remainingPart % radix
-                buckets[bucket].append(number)
-                
-                if done && bucket > 0 {
-                    done = false
-                }
-            }
-            
-            digits *= radix
-            newArray.removeAll()
-            
-            for bucket in buckets {
-                for number in bucket {
-                    newArray.append(number)
-                    try await Task.sleep(until: .now.advanced(by: .milliseconds (sliderValue * 10)), clock: .continuous)
+        sortComplete = true
 
-                }
-            }
-        }
+        
+        
+        
     }
 }
 
