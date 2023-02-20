@@ -188,17 +188,13 @@ struct ContentView : View {
                                     PointMark(x: .value("Position", index), y: .value("Value", item))
                                         .foregroundStyle(vm.swapColors(value: item)) // point graph
                                 }
-                                
                             }
-                            
                         } else if vm.selectGraph == ".line" {
                             Chart {
                                 ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
                                     LineMark(x: .value("Position", index), y: .value("Value", item))
                                         .foregroundStyle(vm.swapColorsTwo(valueTwo: item)) // line graph
                                 }
-                                
-                                
                             }
                         } else if vm.selectGraph == ".area" {
                             Chart {
@@ -208,7 +204,6 @@ struct ContentView : View {
                                 }
                             }
                         }
-                        
                     }
                     
                     // chart y axis data marks
@@ -237,13 +232,12 @@ struct ContentView : View {
                             .font(.system(size: 12))
                             Image(systemName: "wand.and.stars").resizable().frame(width: 20, height: 20)
                         }.onTapGesture {
-                            withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                            withAnimation(.spring(response: 0.15, dampingFraction: 0.50)) {
                                 vm.expand.toggle()
                             }
                             vm.algoButtonPressed.toggle()
                         }
                         .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white)       .disabled(vm.isSorting || vm.isSwooping)
-
 
                         if vm.expand {
                             
@@ -368,12 +362,12 @@ struct ContentView : View {
                                 
                                 Image(systemName: "chart.bar.fill").resizable().frame(width: 20, height: 20)
                             }.onTapGesture {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                withAnimation(.spring(response: 0.15)) {
                                     vm.expand2.toggle()
                                 }
                             }
                             .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white) .disabled(vm.isSorting || vm.isSwooping)
-
+                            
                             
                             
                             if vm.expand2 {
@@ -451,11 +445,13 @@ struct ContentView : View {
                             }
                         })
                         
+                        
                         .frame(height: vm.expand2 ? 280 : 8)
                         .padding()
                         .background(cvm.purple)
                         .cornerRadius(20)
                         .position(x: 323, y: 540)
+                        
                     }
                     
                     if vm.expand2 == false && vm.expand == false {
@@ -472,7 +468,7 @@ struct ContentView : View {
                                 
                                 Image(systemName: "point.3.connected.trianglepath.dotted").resizable().frame(width: 20, height: 20)
                             }.onTapGesture {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                withAnimation(.spring(response: 0.15)) {
                                     vm.expand4.toggle()
                                 }
                             }
@@ -794,8 +790,10 @@ struct ContentView : View {
 
     }
     
+
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
+            
             
             ContentView()
         }
