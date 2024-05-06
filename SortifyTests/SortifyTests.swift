@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import Sortify
 
 final class SortifyTests: XCTestCase {
 

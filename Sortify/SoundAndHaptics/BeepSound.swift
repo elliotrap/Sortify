@@ -74,7 +74,7 @@ class Beep {
         do {
             try engine.start()
             CFRunLoopRunInMode(.defaultMode, CFTimeInterval(duration), false)
-            timer = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(process), userInfo: index, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(process), userInfo: index, repeats: true)
         } catch {
             print("Could not start engine: \(error)")
         }
@@ -92,4 +92,9 @@ class Beep {
             engine.stop()
         }
     }
+}
+
+func beep(_ frequency: Int) {
+    let beep = Beep()
+    beep.beep(frequency)
 }

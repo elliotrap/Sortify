@@ -4,6 +4,7 @@ import SwiftUI
 
 class SortifyViewModel: ObservableObject {
     
+    
     @ObservedObject var cvm = ColorViewModel()
     
     @Published var algoButtonPressed = false
@@ -114,6 +115,7 @@ class SortifyViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func fisherYatesShuffle() async throws {
         swoop = 0
         forCountCounter = 0
@@ -122,6 +124,7 @@ class SortifyViewModel: ObservableObject {
         for i in (0..<data.count).reversed() {
             let j = Int(arc4random_uniform(UInt32(i + 1)))
             if i != j {
+                beep(data[j + 1])
                 activeValue = data[i]
                 previousValue = data[j]
                 try await Task.sleep(until: .now.advanced(by: .milliseconds(10)), clock: .continuous)
@@ -133,7 +136,7 @@ class SortifyViewModel: ObservableObject {
         previousValue = 0
     }
 
-    
+    @MainActor
     func bubbleSort() async throws {
         isSorting = true
         var isSorted = false
@@ -148,6 +151,7 @@ class SortifyViewModel: ObservableObject {
                 activeValue = data[i + 1]
                 previousValue = data[i]
                 if data[i] > data[i + 1] {
+                    beep(data[i + 1])
                     swapHelper(i, i + 1)
                     try await Task.sleep(until: .now.advanced(by: .milliseconds(sliderValue * 10)), clock: .continuous)
                     isSorted = false
@@ -229,5 +233,6 @@ class SortifyViewModel: ObservableObject {
         
         
     }
+    
 }
 
