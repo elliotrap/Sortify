@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 
 class SortifyViewModel: ObservableObject {
-    
+    static var shared = SortifyViewModel()
     
     @ObservedObject var cvm = ColorViewModel()
     
