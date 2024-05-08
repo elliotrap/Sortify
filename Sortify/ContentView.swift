@@ -7,6 +7,7 @@
 import Foundation
 import SwiftUI
 import Charts
+import UIKit
 
 
 struct ContentView : View {
@@ -50,7 +51,53 @@ struct ContentView : View {
                 VStack {
                     ChartView()
                         .frame(width: 350, height: 405)
+                    HStack {
+                        Text("mill:")
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                        
+                            Text(
+                                String(format:"%.6f", vm.sliderValue)
+                            )
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                        
+                        if vm.selectGraph == ".bar" ||
+                            vm.selectGraph == ".line" ||
+                            vm.selectGraph == ".area" {
+                            Text(vm.graphMark)
+                                .font(.system(size: 12))
+                                .foregroundColor(cvm.orange)
+                        } else if vm.selectGraph == ".point" {
+                            Text(vm.graphMark)
+                                .font(.system(size: 12))
+                                .foregroundColor(cvm.orange)
+                        }
+                        Text("\(vm.nodes)")
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                        
+                        
+                        
+                        Text(vm.whileCount)
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                        
+                        Text("\(vm.whileCountCounter)")
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                        
+                        Text(vm.forCount)
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                        
+                        Text("\(vm.forCountCounter)")
+                            .font(.system(size: 12))
+                            .foregroundColor(cvm.orange)
+                        
+                    }
                     Spacer()
+
                 }
 
                 // Button Panel as an Overlay
@@ -66,129 +113,18 @@ struct ContentView : View {
                 .foregroundColor(cvm.dragDownMenu)
             Spacer()
                 .frame(height: 50)
-                        // demonstration display for space time complexity and pseudo code
-                        RoundedRectangle(cornerRadius: 25)
-                        .foregroundColor(cvm.graphBackground)
-                            .frame(width: 350, height: 400)
-
-
-                    
-                    
-                    ZStack {
-                                
-              
-                                
-                            
-                        
-                        
-              
-                        
-                        
-                        if vm.selectGraph == ".bar" ||
-                            vm.selectGraph == ".line" ||
-                            vm.selectGraph == ".area" {
-                            Text(vm.graphMark)
-                                .font(.system(size: 12))
-                                .foregroundColor(cvm.orange)
-                                .position(x: 215, y: 431)
-                        } else if vm.selectGraph == ".point" {
-                            Text(vm.graphMark)
-                                .font(.system(size: 12))
-                                .foregroundColor(cvm.orange)
-                                .position(x: 210, y: 431)
-                        }
-                        Text("\(vm.nodes)")
-                        .font(.system(size: 12))
-                        .foregroundColor(cvm.orange)
-                        .position(x: 248, y: 431)
-                        
-                        
-                        
-                        Text(vm.whileCount)
-                            .font(.system(size: 12))
-                            .foregroundColor(cvm.orange)
-                            .position(x: 290, y: 431)
-                        
-                        Text("\(vm.whileCountCounter)")
-                        .font(.system(size: 12))
-                        .foregroundColor(cvm.orange)
-                        .position(x: 328, y: 431)
-                        
-                        Text(vm.forCount)
-                            .font(.system(size: 12))
-                            .foregroundColor(cvm.orange)
-                            .position(x: 360, y: 431)
-                        
-                        Text("\(vm.forCountCounter)")
-                        .font(.system(size: 12))
-                        .foregroundColor(cvm.orange)
-                        .position(x: 394, y: 431)
-                        
-                        // Algorithm pseudo code
-                        if vm.selectAlgorithm == "bubble" || vm.selectAlgorithm == "insertion" {
-                            Text(textVm.pseudoCode)
-                                .font(.system(size: 20))
-                                .foregroundColor(Color.white)
-                                .position(x: 195, y: 530)
-                                .frame(width: 500, height: 310)
-                            
-                        } else if vm.selectAlgorithm == "quick" || vm.selectAlgorithm == "radix" {
-                            Text(textVm.pseudoCode)
-                                .font(.system(size: 13))
-                                .foregroundColor(Color.white)
-                                .position(x: 205, y: 520)
-                                .frame(width: 500, height: 300)
-                        }
-                        
-                    }
-                   
-        
-        
-                    
-                    
-                    
-                    
-                    ZStack {
-                        // slider with milliseconds
-                        Text("mill:")
-                            .font(.system(size: 12))
-                            .foregroundColor(cvm.orange)
-                            .position(x:107, y:431)
-                        
-                            Text(
-                                String(format:"%.6f", vm.sliderValue)
-                            )
-                            .font(.system(size: 12))
-                            .foregroundColor(cvm.orange)
-                            .position(x:158, y:431)
-                
-       
-                        
-                        
-                    
-
-                        
-                    }
-                    
-             
-                    
-         
-                    
-
-                    
-                    
-  
             
-                        
-                    ZStack {
-                        
-
-                        
-
-                        
-                        
-                        // button for that displays different space time complexity's based on the algorithm chosen
-                        
+            ZStack {
+                // demonstration display for space time complexity and pseudo code
+                RoundedRectangle(cornerRadius: 25)
+                    .foregroundColor(cvm.graphBackground)
+                    .frame(width: 350, height: 400)
+                
+                
+                
+                
+                // button for that displays different space time complexity's based on the algorithm chosen
+                    VStack {
                         if vm.selectAlgorithm == "bubble" || vm.selectAlgorithm == "insertion" {
                             
                             
@@ -201,6 +137,7 @@ struct ContentView : View {
                                 }
                                 
                             }
+                            
                             
                         label: {
                             
@@ -265,15 +202,17 @@ struct ContentView : View {
                             
                         }
                             
-                            
                         .frame(width: 280)
                         .frame(height: vm.expand3 ? 300 : 45)
                         .foregroundColor(Color.white)
                         .buttonStyle(.borderless)
                         .background(cvm.purple)
                         .cornerRadius(20)
-                        .position(x: 250, y: 795)
-                        } else if vm.selectAlgorithm == "quick" { Button {
+
+                            
+                        } else if vm.selectAlgorithm == "quick" {
+                            
+                            Button {
                             
                             withAnimation(Animation.spring()) {
                                 vm.expand3.toggle()
@@ -283,7 +222,7 @@ struct ContentView : View {
                             
                         }
                             
-                        
+                            
                         label: {
                             
                             Text("(AVRAGE CASE)")
@@ -342,25 +281,38 @@ struct ContentView : View {
                                     .frame(width: 300.0, height: 20.0)
                                     .position(x: -130, y: 160)
                                 
-                                }
                             }
+                        }
                         .frame(width: 280)
                         .frame(height: vm.expand3 ? 300 : 45)
                         .foregroundColor(Color.white)
                         .buttonStyle(.borderless)
                         .background(cvm.purple)
                         .cornerRadius(20)
-                        .position(x: 250, y: 795)
-                            
-        
+
                         }
+                        Spacer()
                     }
+                
+                            // Algorithm pseudo code
+                            if vm.selectAlgorithm == "bubble" || vm.selectAlgorithm == "insertion" {
+                                Text(textVm.pseudoCode)
+                                    .font(.system(size: 20))
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 500, height: 310)
+                                
+                            } else if vm.selectAlgorithm == "quick" || vm.selectAlgorithm == "radix" {
+                                Text(textVm.pseudoCode)
+                                    .font(.system(size: 13))
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 500, height: 300)
+                                
+                       
+                    }
+                }
             
-            // length of the scroll view
-            .frame(maxHeight: .infinity)
-        
-        .frame(minWidth: 430, maxWidth: 430, minHeight: 1200, maxHeight: 1200)
     }
+        .frame(minWidth: 430, maxWidth: 430, minHeight: 100, maxHeight: 1200)
 
         .background(LinearGradient (
             

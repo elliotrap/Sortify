@@ -1,7 +1,7 @@
 
 import Foundation
 import SwiftUI
-
+import UIKit
 class SortifyViewModel: ObservableObject {
     static var shared = SortifyViewModel()
     
@@ -50,9 +50,16 @@ class SortifyViewModel: ObservableObject {
             activeValue = 0
             previousValue = 0
             
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            feedbackGenerator.prepare()
+            
             for index in  0..<data.count {
                 swoop = data[index]
-                try await Task.sleep(until: .now.advanced(by: .milliseconds(10)), clock: .continuous)
+                beep(index)
+
+                feedbackGenerator.impactOccurred(intensity: 10)
+
+                try await Task.sleep(until: .now.advanced(by: .milliseconds(1)), clock: .continuous)
             }
             isSwooping = false
         } else if selectGraph == ".line" || selectGraph == ".area" {
@@ -121,9 +128,14 @@ class SortifyViewModel: ObservableObject {
         forCountCounter = 0
         whileCountCounter = 0
         sortComplete = false
+        // Initialize the haptic feedback generator
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+        feedbackGenerator.prepare()
+        
         for i in (0..<data.count).reversed() {
             let j = Int(arc4random_uniform(UInt32(i + 1)))
             if i != j {
+                feedbackGenerator.impactOccurred()
                 beep(data[j + 1])
                 activeValue = data[i]
                 previousValue = data[j]
@@ -142,6 +154,9 @@ class SortifyViewModel: ObservableObject {
         var isSorted = false
         var counter = 0
         
+        // Initialize the haptic feedback generator
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
+        feedbackGenerator.prepare()
         
         while !isSorted {
             whileCountCounter += 1
@@ -151,6 +166,7 @@ class SortifyViewModel: ObservableObject {
                 activeValue = data[i + 1]
                 previousValue = data[i]
                 if data[i] > data[i + 1] {
+                    feedbackGenerator.impactOccurred(intensity: 1)
                     beep(data[i + 1])
                     swapHelper(i, i + 1)
                     try await Task.sleep(until: .now.advanced(by: .milliseconds(sliderValue * 10)), clock: .continuous)
@@ -169,7 +185,9 @@ class SortifyViewModel: ObservableObject {
     
     func insertionSort() async throws   {
         isSorting = true
-        
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+        feedbackGenerator.prepare()
+        feedbackGenerator.impactOccurred(intensity: 10)
         for i in 1 ..< data.count {
             forCountCounter += 1
             var j = i
@@ -177,6 +195,8 @@ class SortifyViewModel: ObservableObject {
             activeValue = data[i - 1]
             while j > 0, data[j] < data[j - 1] {
                 whileCountCounter += 1
+                feedbackGenerator.impactOccurred(intensity: 10)
+                beep(j - 1)
                 swapHelper(j, j - 1)
                 try await Task.sleep(until: .now.advanced(by: .milliseconds(sliderValue * 10)), clock: .continuous)
                 
@@ -196,42 +216,65 @@ class SortifyViewModel: ObservableObject {
         self.isSorting = false
     }
     
+
+
+
+
     func quickSortHelper(_ startIndex: Int, _ endIndex: Int) async throws {
-        
         if startIndex >= endIndex {
             return
         }
-        
+
         let pivotIndex = startIndex
         var firstIndex = startIndex + 1
         var secondIndex = endIndex
-        
-        
+        let notificationGenerator = UINotificationFeedbackGenerator()
+        notificationGenerator.prepare()
+
+        // Trigger vibration at the start of processing pivotIndex
+        notificationGenerator.notificationOccurred(.warning)
+
         while firstIndex <= secondIndex {
             whileCountCounter += 1
             pivot = data[pivotIndex]
             previousValue = data[firstIndex]
             activeValue = data[secondIndex - 1]
+            notificationGenerator.notificationOccurred(.warning)
+
             if data[firstIndex] > data[pivotIndex] && data[secondIndex] < data[pivotIndex] {
-                try await Task.sleep(until: .now.advanced(by: .milliseconds (sliderValue * 10)), clock: .continuous)
+                try await Task.sleep(until: .now.advanced(by: .milliseconds(sliderValue * 10)), clock: .continuous)
                 swapHelper(firstIndex, secondIndex)
+
+                // Trigger vibration after swapping firstIndex and secondIndex
+                notificationGenerator.notificationOccurred(.warning)
+                beep(firstIndex)
+                beep(secondIndex)
             }
+
             if data[firstIndex] <= data[pivotIndex] {
                 firstIndex += 1
+                // Vibration for firstIndex increment
+                notificationGenerator.notificationOccurred(.warning)
+                
             }
+
             if data[secondIndex] >= data[pivotIndex] {
                 secondIndex -= 1
+                // Vibration for secondIndex decrement
+                notificationGenerator.notificationOccurred(.warning)
+                
             }
         }
+
+        // Trigger vibration after swapping the pivot index with secondIndex
+        notificationGenerator.notificationOccurred(.warning)
         swapHelper(pivotIndex, secondIndex)
-        
+        beep(pivotIndex)
+        beep(secondIndex)
+
         try await quickSortHelper(startIndex, secondIndex - 1)
         try await quickSortHelper(secondIndex + 1, endIndex)
         sortComplete = true
-
-        
-        
-        
     }
     
 }
