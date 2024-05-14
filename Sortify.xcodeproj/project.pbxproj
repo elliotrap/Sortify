@@ -7,6 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21695D972BED642800DF4A08 /* digital-7 (italic).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695D912BED642800DF4A08 /* digital-7 (italic).ttf */; };
+		21695D982BED642800DF4A08 /* digital-7 (mono italic).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695D922BED642800DF4A08 /* digital-7 (mono italic).ttf */; };
+		21695D992BED642800DF4A08 /* digital-7 (mono).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695D932BED642800DF4A08 /* digital-7 (mono).ttf */; };
+		21695D9A2BED642800DF4A08 /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695D942BED642800DF4A08 /* digital-7.ttf */; };
+		21695D9B2BED642800DF4A08 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21695D952BED642800DF4A08 /* readme.txt */; };
+		21695DB72BF2B87500DF4A08 /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA12BF2B87500DF4A08 /* SourceCodePro-Black.ttf */; };
+		21695DB82BF2B87500DF4A08 /* SourceCodePro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA22BF2B87500DF4A08 /* SourceCodePro-BlackItalic.ttf */; };
+		21695DB92BF2B87500DF4A08 /* SourceCodePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA32BF2B87500DF4A08 /* SourceCodePro-Bold.ttf */; };
+		21695DBA2BF2B87500DF4A08 /* SourceCodePro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA42BF2B87500DF4A08 /* SourceCodePro-BoldItalic.ttf */; };
+		21695DBB2BF2B87500DF4A08 /* SourceCodePro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA52BF2B87500DF4A08 /* SourceCodePro-ExtraBold.ttf */; };
+		21695DBC2BF2B87500DF4A08 /* SourceCodePro-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA62BF2B87500DF4A08 /* SourceCodePro-ExtraBoldItalic.ttf */; };
+		21695DBD2BF2B87500DF4A08 /* SourceCodePro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA72BF2B87500DF4A08 /* SourceCodePro-ExtraLight.ttf */; };
+		21695DBE2BF2B87500DF4A08 /* SourceCodePro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA82BF2B87500DF4A08 /* SourceCodePro-ExtraLightItalic.ttf */; };
+		21695DBF2BF2B87500DF4A08 /* SourceCodePro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DA92BF2B87500DF4A08 /* SourceCodePro-Italic.ttf */; };
+		21695DC02BF2B87500DF4A08 /* SourceCodePro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DAA2BF2B87500DF4A08 /* SourceCodePro-Light.ttf */; };
+		21695DC12BF2B87500DF4A08 /* SourceCodePro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DAB2BF2B87500DF4A08 /* SourceCodePro-LightItalic.ttf */; };
+		21695DC22BF2B87500DF4A08 /* SourceCodePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DAC2BF2B87500DF4A08 /* SourceCodePro-Medium.ttf */; };
+		21695DC32BF2B87500DF4A08 /* SourceCodePro-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DAD2BF2B87500DF4A08 /* SourceCodePro-MediumItalic.ttf */; };
+		21695DC42BF2B87500DF4A08 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DAE2BF2B87500DF4A08 /* SourceCodePro-Regular.ttf */; };
+		21695DC52BF2B87500DF4A08 /* SourceCodePro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DAF2BF2B87500DF4A08 /* SourceCodePro-SemiBold.ttf */; };
+		21695DC62BF2B87500DF4A08 /* SourceCodePro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DB02BF2B87500DF4A08 /* SourceCodePro-SemiBoldItalic.ttf */; };
+		21695DC72BF2B87500DF4A08 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21695DB22BF2B87500DF4A08 /* OFL.txt */; };
+		21695DC82BF2B87500DF4A08 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21695DB32BF2B87500DF4A08 /* README.txt */; };
+		21695DC92BF2B87500DF4A08 /* SourceCodePro-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DB42BF2B87500DF4A08 /* SourceCodePro-Italic-VariableFont_wght.ttf */; };
+		21695DCA2BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DB52BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf */; };
+		21695DD72BF2F47B00DF4A08 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21695DD62BF2F47B00DF4A08 /* WindowManager.swift */; };
+		21695DDB2BF2F51D00DF4A08 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21695DDA2BF2F51D00DF4A08 /* SwiftUIView.swift */; };
 		21C57F2929820EC500EBAC0F /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C57F2829820EC500EBAC0F /* Text.swift */; };
 		21CF73C1297A14D400EEA10C /* SortifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CF73C0297A14D400EEA10C /* SortifyApp.swift */; };
 		21CF73C3297A14D400EEA10C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CF73C2297A14D400EEA10C /* ContentView.swift */; };
@@ -38,6 +65,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21695D8E2BED633C00DF4A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		21695D912BED642800DF4A08 /* digital-7 (italic).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7 (italic).ttf"; sourceTree = "<group>"; };
+		21695D922BED642800DF4A08 /* digital-7 (mono italic).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7 (mono italic).ttf"; sourceTree = "<group>"; };
+		21695D932BED642800DF4A08 /* digital-7 (mono).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7 (mono).ttf"; sourceTree = "<group>"; };
+		21695D942BED642800DF4A08 /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		21695D952BED642800DF4A08 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		21695DA12BF2B87500DF4A08 /* SourceCodePro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Black.ttf"; sourceTree = "<group>"; };
+		21695DA22BF2B87500DF4A08 /* SourceCodePro-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-BlackItalic.ttf"; sourceTree = "<group>"; };
+		21695DA32BF2B87500DF4A08 /* SourceCodePro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Bold.ttf"; sourceTree = "<group>"; };
+		21695DA42BF2B87500DF4A08 /* SourceCodePro-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-BoldItalic.ttf"; sourceTree = "<group>"; };
+		21695DA52BF2B87500DF4A08 /* SourceCodePro-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-ExtraBold.ttf"; sourceTree = "<group>"; };
+		21695DA62BF2B87500DF4A08 /* SourceCodePro-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		21695DA72BF2B87500DF4A08 /* SourceCodePro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-ExtraLight.ttf"; sourceTree = "<group>"; };
+		21695DA82BF2B87500DF4A08 /* SourceCodePro-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		21695DA92BF2B87500DF4A08 /* SourceCodePro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Italic.ttf"; sourceTree = "<group>"; };
+		21695DAA2BF2B87500DF4A08 /* SourceCodePro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Light.ttf"; sourceTree = "<group>"; };
+		21695DAB2BF2B87500DF4A08 /* SourceCodePro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-LightItalic.ttf"; sourceTree = "<group>"; };
+		21695DAC2BF2B87500DF4A08 /* SourceCodePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Medium.ttf"; sourceTree = "<group>"; };
+		21695DAD2BF2B87500DF4A08 /* SourceCodePro-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-MediumItalic.ttf"; sourceTree = "<group>"; };
+		21695DAE2BF2B87500DF4A08 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		21695DAF2BF2B87500DF4A08 /* SourceCodePro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-SemiBold.ttf"; sourceTree = "<group>"; };
+		21695DB02BF2B87500DF4A08 /* SourceCodePro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		21695DB22BF2B87500DF4A08 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		21695DB32BF2B87500DF4A08 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		21695DB42BF2B87500DF4A08 /* SourceCodePro-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		21695DB52BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		21695DD62BF2F47B00DF4A08 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		21695DDA2BF2F51D00DF4A08 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		21C57F2829820EC500EBAC0F /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		21CF73BD297A14D400EEA10C /* Sortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CF73C0297A14D400EEA10C /* SortifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortifyApp.swift; sourceTree = "<group>"; };
@@ -79,6 +134,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21695D962BED642800DF4A08 /* digital-7 */ = {
+			isa = PBXGroup;
+			children = (
+				21695D912BED642800DF4A08 /* digital-7 (italic).ttf */,
+				21695D922BED642800DF4A08 /* digital-7 (mono italic).ttf */,
+				21695D932BED642800DF4A08 /* digital-7 (mono).ttf */,
+				21695D942BED642800DF4A08 /* digital-7.ttf */,
+				21695D952BED642800DF4A08 /* readme.txt */,
+			);
+			name = "digital-7";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		21695DA02BF2B81A00DF4A08 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				21695DB62BF2B87500DF4A08 /* Source_Code_Pro */,
+				21695D962BED642800DF4A08 /* digital-7 */,
+			);
+			name = "New Group";
+			path = "digital-7/New Group";
+			sourceTree = "<group>";
+		};
+		21695DB12BF2B87500DF4A08 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				21695DA12BF2B87500DF4A08 /* SourceCodePro-Black.ttf */,
+				21695DA22BF2B87500DF4A08 /* SourceCodePro-BlackItalic.ttf */,
+				21695DA32BF2B87500DF4A08 /* SourceCodePro-Bold.ttf */,
+				21695DA42BF2B87500DF4A08 /* SourceCodePro-BoldItalic.ttf */,
+				21695DA52BF2B87500DF4A08 /* SourceCodePro-ExtraBold.ttf */,
+				21695DA62BF2B87500DF4A08 /* SourceCodePro-ExtraBoldItalic.ttf */,
+				21695DA72BF2B87500DF4A08 /* SourceCodePro-ExtraLight.ttf */,
+				21695DA82BF2B87500DF4A08 /* SourceCodePro-ExtraLightItalic.ttf */,
+				21695DA92BF2B87500DF4A08 /* SourceCodePro-Italic.ttf */,
+				21695DAA2BF2B87500DF4A08 /* SourceCodePro-Light.ttf */,
+				21695DAB2BF2B87500DF4A08 /* SourceCodePro-LightItalic.ttf */,
+				21695DAC2BF2B87500DF4A08 /* SourceCodePro-Medium.ttf */,
+				21695DAD2BF2B87500DF4A08 /* SourceCodePro-MediumItalic.ttf */,
+				21695DAE2BF2B87500DF4A08 /* SourceCodePro-Regular.ttf */,
+				21695DAF2BF2B87500DF4A08 /* SourceCodePro-SemiBold.ttf */,
+				21695DB02BF2B87500DF4A08 /* SourceCodePro-SemiBoldItalic.ttf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		21695DB62BF2B87500DF4A08 /* Source_Code_Pro */ = {
+			isa = PBXGroup;
+			children = (
+				21695DB12BF2B87500DF4A08 /* static */,
+				21695DB22BF2B87500DF4A08 /* OFL.txt */,
+				21695DB32BF2B87500DF4A08 /* README.txt */,
+				21695DB42BF2B87500DF4A08 /* SourceCodePro-Italic-VariableFont_wght.ttf */,
+				21695DB52BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf */,
+			);
+			path = Source_Code_Pro;
+			sourceTree = "<group>";
+		};
 		21CF73B4297A14D400EEA10C = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +215,12 @@
 		21CF73BF297A14D400EEA10C /* Sortify */ = {
 			isa = PBXGroup;
 			children = (
+				21695D8E2BED633C00DF4A08 /* Info.plist */,
+				21695DA02BF2B81A00DF4A08 /* New Group */,
 				21CF73C0297A14D400EEA10C /* SortifyApp.swift */,
+				21695DD62BF2F47B00DF4A08 /* WindowManager.swift */,
 				21D28FE22BE436F9001B1DC8 /* SoundAndHaptics */,
+				21695DDA2BF2F51D00DF4A08 /* SwiftUIView.swift */,
 				21CF73C2297A14D400EEA10C /* ContentView.swift */,
 				21CF73EC297A156100EEA10C /* sortifyVm.swift */,
 				21C57F2829820EC500EBAC0F /* Text.swift */,
@@ -226,7 +343,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 21CF73B8297A14D400EEA10C /* Build configuration list for PBXProject "quickSort" */;
+			buildConfigurationList = 21CF73B8297A14D400EEA10C /* Build configuration list for PBXProject "Sortify" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -254,8 +371,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21695D992BED642800DF4A08 /* digital-7 (mono).ttf in Resources */,
+				21695DC92BF2B87500DF4A08 /* SourceCodePro-Italic-VariableFont_wght.ttf in Resources */,
+				21695DC52BF2B87500DF4A08 /* SourceCodePro-SemiBold.ttf in Resources */,
+				21695DB82BF2B87500DF4A08 /* SourceCodePro-BlackItalic.ttf in Resources */,
+				21695DBD2BF2B87500DF4A08 /* SourceCodePro-ExtraLight.ttf in Resources */,
+				21695DC12BF2B87500DF4A08 /* SourceCodePro-LightItalic.ttf in Resources */,
 				21CF73C8297A14D500EEA10C /* Preview Assets.xcassets in Resources */,
+				21695DC72BF2B87500DF4A08 /* OFL.txt in Resources */,
+				21695DBF2BF2B87500DF4A08 /* SourceCodePro-Italic.ttf in Resources */,
+				21695DB72BF2B87500DF4A08 /* SourceCodePro-Black.ttf in Resources */,
+				21695DC32BF2B87500DF4A08 /* SourceCodePro-MediumItalic.ttf in Resources */,
+				21695DC22BF2B87500DF4A08 /* SourceCodePro-Medium.ttf in Resources */,
+				21695D9A2BED642800DF4A08 /* digital-7.ttf in Resources */,
+				21695DB92BF2B87500DF4A08 /* SourceCodePro-Bold.ttf in Resources */,
+				21695DBB2BF2B87500DF4A08 /* SourceCodePro-ExtraBold.ttf in Resources */,
+				21695DC82BF2B87500DF4A08 /* README.txt in Resources */,
+				21695DBA2BF2B87500DF4A08 /* SourceCodePro-BoldItalic.ttf in Resources */,
+				21695DC02BF2B87500DF4A08 /* SourceCodePro-Light.ttf in Resources */,
+				21695DC62BF2B87500DF4A08 /* SourceCodePro-SemiBoldItalic.ttf in Resources */,
+				21695D982BED642800DF4A08 /* digital-7 (mono italic).ttf in Resources */,
+				21695DCA2BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf in Resources */,
+				21695DBC2BF2B87500DF4A08 /* SourceCodePro-ExtraBoldItalic.ttf in Resources */,
 				21CF73C5297A14D500EEA10C /* Assets.xcassets in Resources */,
+				21695D9B2BED642800DF4A08 /* readme.txt in Resources */,
+				21695DBE2BF2B87500DF4A08 /* SourceCodePro-ExtraLightItalic.ttf in Resources */,
+				21695DC42BF2B87500DF4A08 /* SourceCodePro-Regular.ttf in Resources */,
+				21695D972BED642800DF4A08 /* digital-7 (italic).ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +424,8 @@
 			files = (
 				21CF73EB297A153800EEA10C /* colorFile.swift in Sources */,
 				21C57F2929820EC500EBAC0F /* Text.swift in Sources */,
+				21695DDB2BF2F51D00DF4A08 /* SwiftUIView.swift in Sources */,
+				21695DD72BF2F47B00DF4A08 /* WindowManager.swift in Sources */,
 				21CF73ED297A156100EEA10C /* sortifyVm.swift in Sources */,
 				21CF73C3297A14D400EEA10C /* ContentView.swift in Sources */,
 				21CF73C1297A14D400EEA10C /* SortifyApp.swift in Sources */,
@@ -448,6 +592,7 @@
 				DEVELOPMENT_TEAM = SDVM3QJL8X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sortify/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "quickSort - algorithms";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -486,6 +631,7 @@
 				DEVELOPMENT_TEAM = SDVM3QJL8X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sortify/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "quickSort - algorithms";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -586,7 +732,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		21CF73B8297A14D400EEA10C /* Build configuration list for PBXProject "quickSort" */ = {
+		21CF73B8297A14D400EEA10C /* Build configuration list for PBXProject "Sortify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21CF73DF297A14D500EEA10C /* Debug */,

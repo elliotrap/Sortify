@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+
 @main
-struct SortifyApp: App {
+struct SortifyApp: SwiftUI.App {
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-
+            
+            WindowManager()
         }
     }
 }

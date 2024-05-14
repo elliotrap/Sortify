@@ -12,6 +12,9 @@ class SortifyViewModel: ObservableObject {
     @Published var expand3 = false
     @Published var expand2 = false
     @Published var expand = false
+    @Published var algorithmsButtonHeight: CGFloat = 40
+    @Published var graphsButtonHeight: CGFloat = 40
+    @Published var nodesButtonHeight: CGFloat = 40
     
     @Published var data = [Int]()
     @Published var nodes = 35
@@ -33,11 +36,11 @@ class SortifyViewModel: ObservableObject {
     @Published var selectAlgorithm = "bubble"
     @Published var selectGraph = ".bar"
     @Published var myTitle: String = "bubbleSort()"
-    @Published var graphMark: String = "|   bar:"
-    @Published var nodeCount: String = "|   nodes:"
-    @Published var whileCount: String = "|   while:"
+    @Published var graphMark: String = "bar:"
+    @Published var nodeCount: String = "nodes:"
+    @Published var whileCount: String = "while:"
     @Published var forCountCounter: Int = 0
-    @Published var forCount: String = "|   for:"
+    @Published var forCount: String = "for:"
     @Published var whileCountCounter: Int = 0
 
     func swooping() async throws {

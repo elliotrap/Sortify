@@ -8,21 +8,21 @@
 import SwiftUI
 
 class TextViewModel: ObservableObject {
-
+    static var shared = TextViewModel()
 
     @Published var pseudoCode: String = """
-                        function bubble_sort()
+                        func bubbleSort()
                             isSorted = false
-                            n = array
+                            counter = 0
                             while not isSorted
                             isSorted = true
                             
-                                for j in range(0, n-i-1):
+                                for j in range(0, arr - counter)
                                 if array[j] > array[j+1]:
                                     swap(i, i + 1)
                                     isSorted = false
                         
-                        return array
+                        
 """
     
 }
