@@ -173,7 +173,7 @@ struct ContentView : View {
                 RoundedRectangle(cornerRadius: 25)
                     .fill(
                         LinearGradient (
-
+                            
                             gradient: Gradient(colors: [cvm.demonstrationdisplayTop, cvm.demonstrationdisplayBottom]),
                             startPoint: .top,
                             endPoint: .bottom)
@@ -182,90 +182,164 @@ struct ContentView : View {
                 
                 // Algorithm pseudo code
                 if vm.selectAlgorithm == "bubble" {
-                    VStack {
-                        Spacer()
-                            .frame(height: 90)
-                        HStack {
-                            Text(textVm.pseudoCode)
-                                .font(.custom("SourceCodePro-Medium", size: 15))
-                                .font(.system(size: 20))
-                                .foregroundColor(Color.white)
-                                .frame(width: 500, height: 300)
+                    
+                    ZStack {
+                        VStack {
                             Spacer()
-                                .frame(width: 200)
-                            
+                                .frame(height: 20)
+                            HStack {
+                                Text(textVm.pseudoCode)
+                                    .font(.custom("SourceCodePro-Medium", size: 10))
+                                    .font(.system(size: 20))
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 500, height: 300)
+                                Spacer()
+                                    .frame(width: 20)
+                                
+                            }
                         }
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .frame(width: 300, height: 280)
+                            .foregroundColor(.white)
                     }
+                    .padding(.top, 50)
                 } else if vm.selectAlgorithm == "insertion" {
-                    VStack {
-                        Spacer()
-                            .frame(height: 20)
-                        HStack {
-                      
-                            Text(textVm.pseudoCode)
-                                .font(.custom("SourceCodePro-Medium", size: 14))
-                                .foregroundColor(Color.white)
-                                .frame(width: 500, height: 300)
-                          
-                            Spacer()
-                                .frame(width: 50)
+                    ZStack {
+                        ScrollView([.horizontal, .vertical]) {
+                            
+                                VStack {
+                                    
+                                    HStack {
+                                        
+                                        Text(textVm.pseudoCode)
+                                            .font(.custom("SourceCodePro-Medium", size: 13))
+                                            .foregroundColor(Color.white)
+                                            .frame(width: 400, height: 300)
+                                            .padding(.top, 30)
+                                        
+                                        Spacer()
+                                            .frame(height: 150)
+                                    }
+                                }
+                                
+                        
+                            
+                       
                         }
+                        .frame(width: 300, height: 280)
+
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .frame(width: 300, height: 280)
+                            .foregroundColor(.white)
                     }
+                    .padding(.top, 50)
 
                 } else if vm.selectAlgorithm == "quick" {
-                    VStack {
-                        Spacer()
-                            .frame(height: 0)
-                        HStack {
-                            Text(textVm.pseudoCode)
-                                .font(.custom("SourceCodePro-Medium", size: 10))
-                               .foregroundColor(Color.white)
-                                .frame(width: 400, height: 200)
+                    ZStack {
+                        VStack {
                             Spacer()
-                                .frame(width: 50)
+                                .frame(height: 0)
+                            HStack {
+                                Text(textVm.pseudoCode)
+                                    .font(.custom("SourceCodePro-Medium", size: 10))
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 400, height: 200)
+                                Spacer()
+                                    .frame(width: 50)
+                            }
                         }
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .frame(width: 340, height: 280)
+                            .foregroundColor(.white)
                     }
+                    .padding(.top, 50)
                 } else if vm.selectAlgorithm == "radix" {
-                    ScrollView {
-                    VStack {
-                        Spacer()
-                            .frame(height: 0)
-                     
-                        HStack {
-                                Text(textVm.pseudoCode)
-                                    .font(.custom("SourceCodePro-Medium", size: 9))
-                                    .foregroundColor(Color.white)
-                                    .frame(width: 600, height: 500)
-                            Spacer()
-                                .frame(width: 50)
-                         
+                    ZStack {
+                        ScrollView {
+                            VStack {
+                                Spacer()
+                                    .frame(height: 0)
+                                
+                                HStack {
+                                    Text(textVm.pseudoCode)
+                                        .font(.custom("SourceCodePro-Medium", size: 9))
+                                        .foregroundColor(Color.white)
+                                        .frame(width: 600, height: 600)
+                                    Spacer()
+                                        .frame(width: 50)
+                                    
+                                }
+                                Spacer()
+                                    .frame(width: 50)
+                            }
                         }
-                            Spacer()
-                                .frame(width: 50)
-                        }
+                        .frame(width: 340, height: 280)
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .frame(width: 340, height: 280)
+                            .foregroundColor(.white)
                     }
-                    .frame(width: 400, height: 200)
+                    .padding(.top, 50)
                 }   else if vm.selectAlgorithm == "bitonic" {
+                    ZStack {
+                        ScrollView {
+                            VStack {
+                                Spacer()
+                                    .frame(height: 0)
+                                
+                                HStack {
+                                    Text(textVm.pseudoCode)
+                                        .font(.custom("SourceCodePro-Medium", size: 9))
+                                        .foregroundColor(Color.white)
+                                        .frame(width: 600, height: 600)
+                                    Spacer()
+                                        .frame(width: 50)
+                                    
+                                }
+                                Spacer()
+                                    .frame(width: 50)
+                            }
+                        }
+                        .frame(width: 340, height: 280)
+                        
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .frame(width: 340, height: 280)
+                            .foregroundColor(.white)
+                    }
+                    .padding(.top, 50)
+                } else if vm.selectAlgorithm == "cocktailShaker" {
+                    ZStack {
                     ScrollView {
-                    VStack {
-                        Spacer()
-                            .frame(height: 0)
-                     
-                        HStack {
+                        VStack {
+                            Spacer()
+                                .frame(height: 0)
+                            
+                            HStack {
                                 Text(textVm.pseudoCode)
                                     .font(.custom("SourceCodePro-Medium", size: 9))
                                     .foregroundColor(Color.white)
-                                    .frame(width: 600, height: 500)
-                            Spacer()
-                                .frame(width: 50)
-                         
-                        }
+                                    .frame(width: 600, height: 600)
+                                Spacer()
+                                    .frame(width: 50)
+                                
+                            }
                             Spacer()
                                 .frame(width: 50)
                         }
                     }
-                    .frame(width: 400, height: 200)
+                    .frame(width: 340, height: 280)
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .frame(width: 340, height: 280)
+                            .foregroundColor(.white)
                 }
+                    .padding(.top, 50)
+
+            }
                 
                 VStack {
                     Spacer()
@@ -516,14 +590,173 @@ struct ContentView : View {
                     .buttonStyle(.borderless)
                     .background(cvm.purple)
                     .cornerRadius(20)
+                        
+                        
+                    } else if vm.selectAlgorithm == "bitonic" {
+                        Button {
+                            
+                            withAnimation(Animation.spring()) {
+                                vm.expand3.toggle()
+                                vm.showGraph = 1
+                                vm.toggleGraph.toggle()
+                            }
+                            
+                        }
+                        
+                        
+                    label: {
+                        
+                        Text("(AVRAGE CASE)")
+                            .font(.custom("SourceCodePro-Medium", size: 7))
+                            .frame(width: 100.0, height: 20.0)
+                            .position(x: 146, y: 8)
+                            .underline(false)
+                        
+                        Text("O(nlog(n)) Time | O(1) Space")
+                            .font(.custom("SourceCodePro-Medium", size: 12))
+                            .frame(width: 300.0, height: 20.0)
+                            .position(x: 90, y: 23)
+                            .underline(false)
+                        
+                        RoundedRectangle(cornerRadius: 100)
+                            .frame(width: 50, height: 4)
+                            .foregroundColor(cvm.blurredPurple)
+                            .position(x: vm.expand3 ? 50 : 50, y: vm.expand3 ? 290 : 39 )
+                        Rectangle()
+                            .frame(width: 3, height: 200)
+                            .foregroundColor(Color.white)
+                            .position(x: -120, y: 170)
+                        Text("TIME")
+                            .underline(false)
+                            .font(.custom("SourceCodePro-Medium", size: 10))
+                            .rotationEffect(.degrees(270))
+                            .frame(width: 300.0, height: 20.0)
+                            .position(x: -178, y: 85)
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 238, height: 3)
+                                .foregroundColor(Color.white)
+                                .position(x: -98, y: 270)
+                            Text("SPACE")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 10))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: 2, y: 280)
+                            Rectangle()
+                                .frame(width: 238, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -98, y: 260)
+                            Text("O(1)")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -30, y: 250)
+                            Rectangle()
+                                .rotationEffect(.degrees(145))
+                                .frame(width: 270, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -105, y: 182)
+                            Text("O(nlog(n))")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -130, y: 160)
+                            
+                        }
+                        
+                    }
+                    .frame(width: 280)
+                    .frame(height: vm.expand3 ? 300 : 45)
+                    .foregroundColor(Color.white)
+                    .buttonStyle(.borderless)
+                    .background(cvm.purple)
+                    .cornerRadius(20)
+                    } else if vm.selectAlgorithm == "cocktailShaker" {
+                        Button {
+                            
+                            withAnimation(Animation.spring()) {
+                                vm.expand3.toggle()
+                                vm.showGraph = 1
+                                vm.toggleGraph.toggle()
+                            }
+                            
+                        }
+                        
+                        
+                    label: {
+                        
+                        Text("(AVRAGE CASE)")
+                            .font(.custom("SourceCodePro-Medium", size: 7))
+                            .frame(width: 100.0, height: 20.0)
+                            .position(x: 146, y: 8)
+                            .underline(false)
+                        
+                        Text("O(nlog(n)) Time | O(1) Space")
+                            .font(.custom("SourceCodePro-Medium", size: 12))
+                            .frame(width: 300.0, height: 20.0)
+                            .position(x: 90, y: 23)
+                            .underline(false)
+                        
+                        RoundedRectangle(cornerRadius: 100)
+                            .frame(width: 50, height: 4)
+                            .foregroundColor(cvm.blurredPurple)
+                            .position(x: vm.expand3 ? 50 : 50, y: vm.expand3 ? 290 : 39 )
+                        Rectangle()
+                            .frame(width: 3, height: 200)
+                            .foregroundColor(Color.white)
+                            .position(x: -120, y: 170)
+                        Text("TIME")
+                            .underline(false)
+                            .font(.custom("SourceCodePro-Medium", size: 10))
+                            .rotationEffect(.degrees(270))
+                            .frame(width: 300.0, height: 20.0)
+                            .position(x: -178, y: 85)
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 238, height: 3)
+                                .foregroundColor(Color.white)
+                                .position(x: -98, y: 270)
+                            Text("SPACE")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 10))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: 2, y: 280)
+                            Rectangle()
+                                .frame(width: 238, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -98, y: 260)
+                            Text("O(1)")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -30, y: 250)
+                            Rectangle()
+                                .rotationEffect(.degrees(145))
+                                .frame(width: 270, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -105, y: 182)
+                            Text("O(nlog(n))")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -130, y: 160)
+                            
+                        }
+                        
+                    }
+                    .frame(width: 280)
+                    .frame(height: vm.expand3 ? 300 : 45)
+                    .foregroundColor(Color.white)
+                    .buttonStyle(.borderless)
+                    .background(cvm.purple)
+                    .cornerRadius(20)
                     }
                     
+                    
                     Spacer()
-                    
-                    
-                    
-                }
-                }
+  
+            }
+        }
             
     }
         .environment(\.sizeCategory, .medium)
@@ -771,19 +1004,24 @@ struct ButtonsView: View {
                                     vm.selectAlgorithm = "bubble"
                                     vm.algoButtonPressed.toggle()
                                     textVm.pseudoCode = """
-                                                    func bubbleSort()
-                                                        isSorted = false
-                                                        count = 0
-                                                        while not isSorted
-                                                        isSorted = true
-                                                        
-                                                        for j in range(0, arr - count)
-                                                        if array[j] > array[j+1]:
-                                                            swap(i, i + 1)
-                                                            isSorted = false
-                                                    
-                                                    
-                            """
+def bubble_sort(arr):
+    n = len(arr)  # Get the length of the array
+    
+    # Traverse through all array elements
+    for i in range(n):
+        # Initialize a flag to detect if any swap happens
+        swapped = False
+        
+        # Last i elements are already sorted,
+        # so we do not need to check them
+        for j in range(0, n - i - 1):
+            # Traverse the array from 0 to n-i-1
+            # Swap if the element found is
+            # greater than the next element
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]  # Swap elements
+                swapped = True
+"""
                                 }) {
                                     Text("bubble sort").padding()
                                         .font(.custom("SourceCodePro-Medium", size: 15))
@@ -817,16 +1055,25 @@ struct ButtonsView: View {
                                         vm.selectAlgorithm = "insertion"
                                         vm.algoButtonPressed.toggle()
                                         textVm.pseudoCode = """
-        func insertionSort(array):
-        for i in 0 ..< array.count:
-            j = i
-            
-        while j >= 0, array[j] > array[i - 1]
-                array[j  +  1] = array[j]
-                j -= 1
-                swap()
+def insertion_sort(arr):
+    # Traverse through 1 to len(arr)
+    for i in range(1, len(arr)):
+        key = arr[i]  # Current element to be inserted
+        j = i - 1  # Index of the previous element
 
-            return array
+        # Move elements of arr[0..i-1], that are greater than key,
+        # to one position ahead of their current position
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        # Place the key element at the correct position
+        arr[j + 1] = key
+
+# Example usage
+arr = [12, 11, 13, 5, 6]
+insertion_sort(arr)
+print("Sorted array:", arr)
+
 """
                                         
                                         
@@ -861,20 +1108,35 @@ struct ButtonsView: View {
                                     vm.selectAlgorithm = "quick"
                                     vm.algoButtonPressed.toggle()
                                     textVm.pseudoCode = """
-        function quickSort(array, start, end):
-            if start < end:
-            pivotIndex = partition(array, start, end)
-            quickSort(array, start, pivotIndex - 1)
-            quickSkort(array, pivotIndex + 1, end)
+def quicksort(arr):
+    # Helper function to partition the array
+    def partition(low, high):
 
-        function partition(array, start, end):
-            pivot = array[end]
-            i = start - 1
-            while start <= end:
-            if array[j] <= pivot:
-                    i += 1
-                    array[i], array[j] = array[j], array[i]
-            array[i + 1], array[end] = array[end], array[i + 1]
+        # Choose the rightmost element as the pivot
+        pivot = arr[high]
+        i = low - 1  # Pointer for the greater element
+        for j in range(low, high):
+            if arr[j] <= pivot:
+                i += 1  # Move the pointer to the right
+                arr[i], arr[j] = arr[j], arr[i]  # Swap elements
+
+         # Swap the pivot element to its correct position
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+        return i + 1  # Return the partition point
+
+    # Helper function to perform quicksort
+    def quicksort_recursive(low, high):
+        if low < high:
+             # Partition the array and get the pivot index
+            pi = partition(low, high)
+
+            # Recursively sort the elements before the pivot
+            quicksort_recursive(low, pi - 1)
+
+             # Recursively sort the elements after the pivot
+            quicksort_recursive(pi + 1, high)
+     # Start the recursive quicksort
+    quicksort_recursive(0, len(arr) - 1)
 """
                                     
                                 }) {
@@ -908,53 +1170,53 @@ struct ButtonsView: View {
                                     vm.selectAlgorithm = "radix"
                                     vm.algoButtonPressed.toggle()
                                     textVm.pseudoCode = """
-        func countingSort(by place: Int) async throws {
-            let radix = 10
-            var count = [Int](repeating: 0, count: radix)
-            var output = [Int](repeating: 0, count: data.count)
-            
-            for number in data {
-                let digit = getDigit(number, at: place)
-                count[digit] += 1
-            }
-            
-            for i in 1..<radix {
-                count[i] += count[i - 1]
-            }
-            
-            for number in data.reversed() {
-                let digit = getDigit(number, at: place)
-                count[digit] -= 1
-                output[count[digit]] = number
-            }
-            
-            for i in 0..<data.count {
-                data[i] = output[i]
-            }
-        }
-        
-        func getMax() -> Int {
-            guard let max = data.max() else {
-                fatalError("Array is empty")
-            }
-            return max
-        }
-        
-        func radixSort() async throws {
-         
-            isSorting = true
-            let maxNumber = getMax()
-            var place = 1
-            
-            while maxNumber / place > 0 {
+def counting_sort(arr, exp):
+    n = len(arr)
+# Output array to store sorted numbers
+    output = [0] * n
 
-                whileCountCounter += 1
-                try await countingSort(by: place)
-                place *= 10
-            }
-            
-            sortComplete = true
-        }
+# Count array to store the count of occurrences of digits (0-9)
+    count = [0] * 10
+
+    # Store the count of occurrences of each digit in count[]
+    for i in range(n):
+        index = (arr[i] // exp) % 10
+        count[index] += 1
+
+    # Change count[i] so that it contains 
+    # the actual position of this digit in output[]
+    for i in range(1, 10):
+        count[i] += count[i - 1]
+
+    # Build the output array
+    for i in range(n - 1, -1, -1):
+        index = (arr[i] // exp) % 10
+        output[count[index] - 1] = arr[i]
+        count[index] -= 1
+
+    # Copy the output array to arr[], 
+    # so that arr[] now contains sorted numbers
+    for i in range(n):
+        arr[i] = output[i]
+
+def radix_sort(arr):
+    # Find the maximum number to 
+    # determine the number of digits
+    max_num = max(arr)
+
+    # Do counting sort for every digit. 
+    # Note that exp is 10^i where i is 
+    # the current digit number
+    exp = 1
+    while max_num // exp > 0:
+        counting_sort(arr, exp)
+        exp *= 10
+
+# Example usage
+arr = [170, 45, 75, 90, 802, 24, 2, 66]
+radix_sort(arr)
+print("Sorted array:", arr)
+
 
 """
                                     
@@ -987,53 +1249,39 @@ struct ButtonsView: View {
                                     vm.selectAlgorithm = "bitonic"
                                     vm.algoButtonPressed.toggle()
                                     textVm.pseudoCode = """
-        func countingSort(by place: Int) async throws {
-            let radix = 10
-            var count = [Int](repeating: 0, count: radix)
-            var output = [Int](repeating: 0, count: data.count)
-            
-            for number in data {
-                let digit = getDigit(number, at: place)
-                count[digit] += 1
-            }
-            
-            for i in 1..<radix {
-                count[i] += count[i - 1]
-            }
-            
-            for number in data.reversed() {
-                let digit = getDigit(number, at: place)
-                count[digit] -= 1
-                output[count[digit]] = number
-            }
-            
-            for i in 0..<data.count {
-                data[i] = output[i]
-            }
-        }
-        
-        func getMax() -> Int {
-            guard let max = data.max() else {
-                fatalError("Array is empty")
-            }
-            return max
-        }
-        
-        func radixSort() async throws {
-         
-            isSorting = true
-            let maxNumber = getMax()
-            var place = 1
-            
-            while maxNumber / place > 0 {
+def bitonic_sort(arr, up=True):
+    # Helper function to merge a bitonic sequence
+    in ascending or descending order
 
-                whileCountCounter += 1
-                try await countingSort(by: place)
-                place *= 10
-            }
-            
-            sortComplete = true
-        }
+    def bitonic_merge(arr, low, cnt, up):
+        if cnt > 1:
+            k = cnt // 2
+
+            # Compare and swap elements in the bitonic sequence
+            for i in range(low, low + k):
+                if (arr[i] > arr[i + k]) == up:
+                    arr[i], arr[i + k] = arr[i + k], arr[i]
+
+            # Recursively merge the two halves
+            bitonic_merge(arr, low, k, up)
+            bitonic_merge(arr, low + k, k, up)
+
+    # Helper function to sort the array into a bitonic sequence
+    def bitonic_sort_recursive(arr, low, cnt, up):
+        if cnt > 1:
+            k = cnt // 2
+            # Sort the first half in ascending order
+            bitonic_sort_recursive(arr, low, k, True)
+            # Sort the second half in descending order
+            bitonic_sort_recursive(arr, low + k, k, False)
+            # Merge the entire sequence
+            bitonic_merge(arr, low, cnt, up)
+
+    # Start the recursive bitonic sort
+    bitonic_sort_recursive(arr, 0, len(arr), up)
+
+
+
 
 """
                                     
@@ -1066,53 +1314,44 @@ struct ButtonsView: View {
                                     vm.selectAlgorithm = "cocktailShaker"
                                     vm.algoButtonPressed.toggle()
                                     textVm.pseudoCode = """
-        func countingSort(by place: Int) async throws {
-            let radix = 10
-            var count = [Int](repeating: 0, count: radix)
-            var output = [Int](repeating: 0, count: data.count)
-            
-            for number in data {
-                let digit = getDigit(number, at: place)
-                count[digit] += 1
-            }
-            
-            for i in 1..<radix {
-                count[i] += count[i - 1]
-            }
-            
-            for number in data.reversed() {
-                let digit = getDigit(number, at: place)
-                count[digit] -= 1
-                output[count[digit]] = number
-            }
-            
-            for i in 0..<data.count {
-                data[i] = output[i]
-            }
-        }
+def cocktail_shaker_sort(arr):
+    n = len(arr)
+    swapped = True
+    start = 0
+    end = n - 1
+    
+    while swapped:
+        swapped = False
         
-        func getMax() -> Int {
-            guard let max = data.max() else {
-                fatalError("Array is empty")
-            }
-            return max
-        }
+        # Forward pass
+        for i in range(start, end):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
         
-        func radixSort() async throws {
-         
-            isSorting = true
-            let maxNumber = getMax()
-            var place = 1
-            
-            while maxNumber / place > 0 {
+# If nothing moved, then the array is sorted
+        if not swapped:
+            break
 
-                whileCountCounter += 1
-                try await countingSort(by: place)
-                place *= 10
-            }
-            
-            sortComplete = true
-        }
+# Otherwise reset the swapped flag,
+ so that it can be used in the next stage
+        swapped = False
+        
+# Move the end point back by one, 
+because the last element is in place
+        end -= 1
+        
+        # Backward pass
+        for i in range(end - 1, start - 1, -1):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+        
+# Move the start point forward by one, 
+because the first element is in place
+
+        start += 1
+
 
 """
                                     
