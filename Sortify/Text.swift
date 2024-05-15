@@ -17,10 +17,10 @@ class TextViewModel: ObservableObject {
                             while not isSorted
                             isSorted = true
                             
-                                for j in range(0, arr - counter)
-                                if array[j] > array[j+1]:
-                                    swap(i, i + 1)
-                                    isSorted = false
+                            for j in range(0, arr - count)
+                            if array[j] > array[j+1]:
+                                swap(i, i + 1)
+                                isSorted = false
                         
                         
 """

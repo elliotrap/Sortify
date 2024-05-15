@@ -14,8 +14,8 @@
             filePath = "Sortify/sortifyVm.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
             landmarkName = "SortifyViewModel"
             landmarkType = "3">
          </BreakpointContent>

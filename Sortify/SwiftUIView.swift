@@ -19,7 +19,7 @@ struct LoadingView: View {
     var body: some View {
         ZStack {
             VStack {
-                Image(systemName: "cellularbars").resizable().frame(width: 100, height: 100)
+                Image(systemName: "cellularbars").resizable().frame(width: 190, height: 100)
                     .symbolEffect(
                         .variableColor
                             .iterative
@@ -28,7 +28,7 @@ struct LoadingView: View {
                     .foregroundColor(cvm.orange)
                     
 
-                Text("Sortify")
+                Text("S O R T I F Y")
                     .font(.custom("SourceCodePro-Bold", size: 25))
                     .foregroundColor(cvm.orange)
 

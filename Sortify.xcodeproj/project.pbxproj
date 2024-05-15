@@ -34,6 +34,20 @@
 		21695DCA2BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21695DB52BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf */; };
 		21695DD72BF2F47B00DF4A08 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21695DD62BF2F47B00DF4A08 /* WindowManager.swift */; };
 		21695DDB2BF2F51D00DF4A08 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21695DDA2BF2F51D00DF4A08 /* SwiftUIView.swift */; };
+		21695DED2BF2FC1400DF4A08 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 21695DDC2BF2FC1400DF4A08 /* Contents.json */; };
+		21695DEE2BF2FC1400DF4A08 /* icon_20.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DDD2BF2FC1400DF4A08 /* icon_20.png */; };
+		21695DEF2BF2FC1400DF4A08 /* icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DDE2BF2FC1400DF4A08 /* icon_29.png */; };
+		21695DF02BF2FC1400DF4A08 /* icon_40.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DDF2BF2FC1400DF4A08 /* icon_40.png */; };
+		21695DF12BF2FC1400DF4A08 /* icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE02BF2FC1400DF4A08 /* icon_58.png */; };
+		21695DF22BF2FC1400DF4A08 /* icon_60.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE12BF2FC1400DF4A08 /* icon_60.png */; };
+		21695DF32BF2FC1400DF4A08 /* icon_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE22BF2FC1400DF4A08 /* icon_76.png */; };
+		21695DF42BF2FC1400DF4A08 /* icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE32BF2FC1400DF4A08 /* icon_80.png */; };
+		21695DF52BF2FC1400DF4A08 /* icon_87.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE42BF2FC1400DF4A08 /* icon_87.png */; };
+		21695DF62BF2FC1400DF4A08 /* icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE52BF2FC1400DF4A08 /* icon_120.png */; };
+		21695DF72BF2FC1400DF4A08 /* icon_152.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE62BF2FC1400DF4A08 /* icon_152.png */; };
+		21695DF82BF2FC1400DF4A08 /* icon_167.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE72BF2FC1400DF4A08 /* icon_167.png */; };
+		21695DF92BF2FC1400DF4A08 /* icon_180.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE82BF2FC1400DF4A08 /* icon_180.png */; };
+		21695DFA2BF2FC1400DF4A08 /* icon_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 21695DE92BF2FC1400DF4A08 /* icon_1024.png */; };
 		21C57F2929820EC500EBAC0F /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C57F2829820EC500EBAC0F /* Text.swift */; };
 		21CF73C1297A14D400EEA10C /* SortifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CF73C0297A14D400EEA10C /* SortifyApp.swift */; };
 		21CF73C3297A14D400EEA10C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CF73C2297A14D400EEA10C /* ContentView.swift */; };
@@ -93,6 +107,20 @@
 		21695DB52BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		21695DD62BF2F47B00DF4A08 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		21695DDA2BF2F51D00DF4A08 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		21695DDC2BF2FC1400DF4A08 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		21695DDD2BF2FC1400DF4A08 /* icon_20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_20.png; sourceTree = "<group>"; };
+		21695DDE2BF2FC1400DF4A08 /* icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_29.png; sourceTree = "<group>"; };
+		21695DDF2BF2FC1400DF4A08 /* icon_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_40.png; sourceTree = "<group>"; };
+		21695DE02BF2FC1400DF4A08 /* icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_58.png; sourceTree = "<group>"; };
+		21695DE12BF2FC1400DF4A08 /* icon_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_60.png; sourceTree = "<group>"; };
+		21695DE22BF2FC1400DF4A08 /* icon_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_76.png; sourceTree = "<group>"; };
+		21695DE32BF2FC1400DF4A08 /* icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_80.png; sourceTree = "<group>"; };
+		21695DE42BF2FC1400DF4A08 /* icon_87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_87.png; sourceTree = "<group>"; };
+		21695DE52BF2FC1400DF4A08 /* icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120.png; sourceTree = "<group>"; };
+		21695DE62BF2FC1400DF4A08 /* icon_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_152.png; sourceTree = "<group>"; };
+		21695DE72BF2FC1400DF4A08 /* icon_167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_167.png; sourceTree = "<group>"; };
+		21695DE82BF2FC1400DF4A08 /* icon_180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_180.png; sourceTree = "<group>"; };
+		21695DE92BF2FC1400DF4A08 /* icon_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_1024.png; sourceTree = "<group>"; };
 		21C57F2829820EC500EBAC0F /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		21CF73BD297A14D400EEA10C /* Sortify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sortify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CF73C0297A14D400EEA10C /* SortifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortifyApp.swift; sourceTree = "<group>"; };
@@ -192,6 +220,43 @@
 			path = Source_Code_Pro;
 			sourceTree = "<group>";
 		};
+		21695DEA2BF2FC1400DF4A08 /* AppIcon.appiconset */ = {
+			isa = PBXGroup;
+			children = (
+				21695DDC2BF2FC1400DF4A08 /* Contents.json */,
+				21695DDD2BF2FC1400DF4A08 /* icon_20.png */,
+				21695DDE2BF2FC1400DF4A08 /* icon_29.png */,
+				21695DDF2BF2FC1400DF4A08 /* icon_40.png */,
+				21695DE02BF2FC1400DF4A08 /* icon_58.png */,
+				21695DE12BF2FC1400DF4A08 /* icon_60.png */,
+				21695DE22BF2FC1400DF4A08 /* icon_76.png */,
+				21695DE32BF2FC1400DF4A08 /* icon_80.png */,
+				21695DE42BF2FC1400DF4A08 /* icon_87.png */,
+				21695DE52BF2FC1400DF4A08 /* icon_120.png */,
+				21695DE62BF2FC1400DF4A08 /* icon_152.png */,
+				21695DE72BF2FC1400DF4A08 /* icon_167.png */,
+				21695DE82BF2FC1400DF4A08 /* icon_180.png */,
+				21695DE92BF2FC1400DF4A08 /* icon_1024.png */,
+			);
+			path = AppIcon.appiconset;
+			sourceTree = "<group>";
+		};
+		21695DEB2BF2FC1400DF4A08 /* appIcon */ = {
+			isa = PBXGroup;
+			children = (
+				21695DEA2BF2FC1400DF4A08 /* AppIcon.appiconset */,
+			);
+			path = appIcon;
+			sourceTree = "<group>";
+		};
+		21695DEC2BF2FC1400DF4A08 /* SortifyAppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				21695DEB2BF2FC1400DF4A08 /* appIcon */,
+			);
+			path = SortifyAppIcon;
+			sourceTree = "<group>";
+		};
 		21CF73B4297A14D400EEA10C = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +290,7 @@
 				21CF73EC297A156100EEA10C /* sortifyVm.swift */,
 				21C57F2829820EC500EBAC0F /* Text.swift */,
 				21CF73EA297A153800EEA10C /* colorFile.swift */,
+				21695DEC2BF2FC1400DF4A08 /* SortifyAppIcon */,
 				21CF73C4297A14D500EEA10C /* Assets.xcassets */,
 				21CF73C6297A14D500EEA10C /* Preview Content */,
 			);
@@ -373,20 +439,29 @@
 			files = (
 				21695D992BED642800DF4A08 /* digital-7 (mono).ttf in Resources */,
 				21695DC92BF2B87500DF4A08 /* SourceCodePro-Italic-VariableFont_wght.ttf in Resources */,
+				21695DF62BF2FC1400DF4A08 /* icon_120.png in Resources */,
 				21695DC52BF2B87500DF4A08 /* SourceCodePro-SemiBold.ttf in Resources */,
 				21695DB82BF2B87500DF4A08 /* SourceCodePro-BlackItalic.ttf in Resources */,
 				21695DBD2BF2B87500DF4A08 /* SourceCodePro-ExtraLight.ttf in Resources */,
 				21695DC12BF2B87500DF4A08 /* SourceCodePro-LightItalic.ttf in Resources */,
 				21CF73C8297A14D500EEA10C /* Preview Assets.xcassets in Resources */,
+				21695DEF2BF2FC1400DF4A08 /* icon_29.png in Resources */,
+				21695DEE2BF2FC1400DF4A08 /* icon_20.png in Resources */,
+				21695DF02BF2FC1400DF4A08 /* icon_40.png in Resources */,
 				21695DC72BF2B87500DF4A08 /* OFL.txt in Resources */,
 				21695DBF2BF2B87500DF4A08 /* SourceCodePro-Italic.ttf in Resources */,
 				21695DB72BF2B87500DF4A08 /* SourceCodePro-Black.ttf in Resources */,
+				21695DF52BF2FC1400DF4A08 /* icon_87.png in Resources */,
 				21695DC32BF2B87500DF4A08 /* SourceCodePro-MediumItalic.ttf in Resources */,
+				21695DF92BF2FC1400DF4A08 /* icon_180.png in Resources */,
 				21695DC22BF2B87500DF4A08 /* SourceCodePro-Medium.ttf in Resources */,
 				21695D9A2BED642800DF4A08 /* digital-7.ttf in Resources */,
+				21695DF22BF2FC1400DF4A08 /* icon_60.png in Resources */,
 				21695DB92BF2B87500DF4A08 /* SourceCodePro-Bold.ttf in Resources */,
 				21695DBB2BF2B87500DF4A08 /* SourceCodePro-ExtraBold.ttf in Resources */,
+				21695DF32BF2FC1400DF4A08 /* icon_76.png in Resources */,
 				21695DC82BF2B87500DF4A08 /* README.txt in Resources */,
+				21695DF12BF2FC1400DF4A08 /* icon_58.png in Resources */,
 				21695DBA2BF2B87500DF4A08 /* SourceCodePro-BoldItalic.ttf in Resources */,
 				21695DC02BF2B87500DF4A08 /* SourceCodePro-Light.ttf in Resources */,
 				21695DC62BF2B87500DF4A08 /* SourceCodePro-SemiBoldItalic.ttf in Resources */,
@@ -394,10 +469,15 @@
 				21695DCA2BF2B87500DF4A08 /* SourceCodePro-VariableFont_wght.ttf in Resources */,
 				21695DBC2BF2B87500DF4A08 /* SourceCodePro-ExtraBoldItalic.ttf in Resources */,
 				21CF73C5297A14D500EEA10C /* Assets.xcassets in Resources */,
+				21695DF82BF2FC1400DF4A08 /* icon_167.png in Resources */,
 				21695D9B2BED642800DF4A08 /* readme.txt in Resources */,
 				21695DBE2BF2B87500DF4A08 /* SourceCodePro-ExtraLightItalic.ttf in Resources */,
 				21695DC42BF2B87500DF4A08 /* SourceCodePro-Regular.ttf in Resources */,
 				21695D972BED642800DF4A08 /* digital-7 (italic).ttf in Resources */,
+				21695DF72BF2FC1400DF4A08 /* icon_152.png in Resources */,
+				21695DED2BF2FC1400DF4A08 /* Contents.json in Resources */,
+				21695DF42BF2FC1400DF4A08 /* icon_80.png in Resources */,
+				21695DFA2BF2FC1400DF4A08 /* icon_1024.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,13 +667,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Sortify/Preview Content\"";
 				DEVELOPMENT_TEAM = SDVM3QJL8X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sortify/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "quickSort - algorithms";
+				INFOPLIST_KEY_CFBundleDisplayName = Sortify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -606,7 +686,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = swift.Sortify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -626,13 +706,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Sortify/Preview Content\"";
 				DEVELOPMENT_TEAM = SDVM3QJL8X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sortify/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "quickSort - algorithms";
+				INFOPLIST_KEY_CFBundleDisplayName = Sortify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -645,7 +725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = swift.Sortify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

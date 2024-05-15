@@ -19,6 +19,8 @@ struct ContentView : View {
     
     // color view model
     @ObservedObject var cvm = ColorViewModel()
+    
+    
 
     init() {
         for familyName in UIFont.familyNames {
@@ -44,8 +46,9 @@ struct ContentView : View {
             // Algorithm title
             Text(vm.myTitle)
                 .fontWeight(.heavy)
-                .font(.custom("SourceCodePro-Bold", size: 25))
+                .font(.custom("SourceCodePro-ExtraBold", size: 25))
                 .foregroundColor(cvm.orange)
+            
             // graph background
             
             
@@ -54,6 +57,13 @@ struct ContentView : View {
           
             ZStack {
                 RoundedRectangle(cornerRadius: 25)
+                    .fill(
+                        LinearGradient (
+
+                            gradient: Gradient(colors: [cvm.graphBackground, cvm.graphBackgroundBottom]),
+                            startPoint: .top,
+                            endPoint: .bottom)
+                    )
                 .foregroundColor(cvm.graphBackground)
                     .frame(width: 350, height: 665)
 
@@ -65,7 +75,7 @@ struct ContentView : View {
                         VStack {
                         
                             Rectangle()
-                                .stroke(lineWidth:1 )
+                                .stroke(lineWidth: 1)
                                 .frame(width: 300, height: 17)
 
 
@@ -152,7 +162,7 @@ struct ContentView : View {
                 }
             }
             Spacer()
-                .frame(height: 50)
+                .frame(height: 100)
             Image(systemName: "line.3.horizontal.decrease").resizable().frame(width:50, height: 20)
                 .foregroundColor(cvm.dragDownMenu)
             Spacer()
@@ -161,7 +171,13 @@ struct ContentView : View {
             ZStack {
                 // demonstration display for space time complexity and pseudo code
                 RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(cvm.graphBackground)
+                    .fill(
+                        LinearGradient (
+
+                            gradient: Gradient(colors: [cvm.demonstrationdisplayTop, cvm.demonstrationdisplayBottom]),
+                            startPoint: .top,
+                            endPoint: .bottom)
+                    )
                     .frame(width: 350, height: 400)
                 
                 // Algorithm pseudo code
@@ -209,7 +225,47 @@ struct ContentView : View {
                                 .frame(width: 50)
                         }
                     }
-        }
+                } else if vm.selectAlgorithm == "radix" {
+                    ScrollView {
+                    VStack {
+                        Spacer()
+                            .frame(height: 0)
+                     
+                        HStack {
+                                Text(textVm.pseudoCode)
+                                    .font(.custom("SourceCodePro-Medium", size: 9))
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 600, height: 500)
+                            Spacer()
+                                .frame(width: 50)
+                         
+                        }
+                            Spacer()
+                                .frame(width: 50)
+                        }
+                    }
+                    .frame(width: 400, height: 200)
+                }   else if vm.selectAlgorithm == "bitonic" {
+                    ScrollView {
+                    VStack {
+                        Spacer()
+                            .frame(height: 0)
+                     
+                        HStack {
+                                Text(textVm.pseudoCode)
+                                    .font(.custom("SourceCodePro-Medium", size: 9))
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 600, height: 500)
+                            Spacer()
+                                .frame(width: 50)
+                         
+                        }
+                            Spacer()
+                                .frame(width: 50)
+                        }
+                    }
+                    .frame(width: 400, height: 200)
+                }
                 
                 VStack {
                     Spacer()
@@ -382,7 +438,86 @@ struct ContentView : View {
                     .background(cvm.purple)
                     .cornerRadius(20)
                         
+                    } else if vm.selectAlgorithm == "radix" {
+                        Button {
+                            
+                            withAnimation(Animation.spring()) {
+                                vm.expand3.toggle()
+                                vm.showGraph = 1
+                                vm.toggleGraph.toggle()
+                            }
+                            
+                        }
+                        
+                        
+                    label: {
+                        
+                        Text("(AVRAGE CASE)")
+                            .font(.custom("SourceCodePro-Medium", size: 7))
+                            .frame(width: 100.0, height: 20.0)
+                            .position(x: 146, y: 8)
+                            .underline(false)
+                        
+                        Text("O(nlog(n)) Time | O(1) Space")
+                            .font(.custom("SourceCodePro-Medium", size: 12))
+                            .frame(width: 300.0, height: 20.0)
+                            .position(x: 90, y: 23)
+                            .underline(false)
+                        
+                        RoundedRectangle(cornerRadius: 100)
+                            .frame(width: 50, height: 4)
+                            .foregroundColor(cvm.blurredPurple)
+                            .position(x: vm.expand3 ? 50 : 50, y: vm.expand3 ? 290 : 39 )
+                        Rectangle()
+                            .frame(width: 3, height: 200)
+                            .foregroundColor(Color.white)
+                            .position(x: -120, y: 170)
+                        Text("TIME")
+                            .underline(false)
+                            .font(.custom("SourceCodePro-Medium", size: 10))
+                            .rotationEffect(.degrees(270))
+                            .frame(width: 300.0, height: 20.0)
+                            .position(x: -178, y: 85)
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 238, height: 3)
+                                .foregroundColor(Color.white)
+                                .position(x: -98, y: 270)
+                            Text("SPACE")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 10))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: 2, y: 280)
+                            Rectangle()
+                                .frame(width: 238, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -98, y: 260)
+                            Text("O(1)")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -30, y: 250)
+                            Rectangle()
+                                .rotationEffect(.degrees(145))
+                                .frame(width: 270, height: 1)
+                                .foregroundColor(Color.white)
+                                .position(x: -105, y: 182)
+                            Text("O(nlog(n))")
+                                .underline(false)
+                                .font(.custom("SourceCodePro-Medium", size: 12))
+                                .frame(width: 300.0, height: 20.0)
+                                .position(x: -130, y: 160)
+                            
+                        }
                     }
+                    .frame(width: 280)
+                    .frame(height: vm.expand3 ? 300 : 45)
+                    .foregroundColor(Color.white)
+                    .buttonStyle(.borderless)
+                    .background(cvm.purple)
+                    .cornerRadius(20)
+                    }
+                    
                     Spacer()
                     
                     
@@ -420,38 +555,38 @@ struct ChartView: View {
     var body: some View {
         HStack {
             Spacer()
-                .frame(width: 50)
+                .frame(width: vm.nodes < 35 ? 20 : 50)
           
                     
                     // if else statement to choose between bar graph, point graph, line graph
                     if vm.selectGraph == ".bar" {
                         Chart {
-                            ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
-                                BarMark(x: .value("Position", index), y: .value("Value", item))
-                                    .foregroundStyle(vm.swapColors(value: item))
-                                
+                                ForEach(Array(zip(vm.data.indices, vm.data.filter { $0 <= vm.nodes })), id: \.0) { index, item in
+                                    BarMark(x: .value("Position", index), y: .value("Value", item))
+                                        .foregroundStyle(vm.swapColors(value: item))
+                                }
                             }
-                            
-                        }
+                         
+
                     } else if vm.selectGraph == ".point" {
                         Chart {
-                            ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
+                            ForEach(Array(zip(vm.data.indices, vm.data.filter { $0 <= vm.nodes })), id: \.0) { index, item in
                                 PointMark(x: .value("Position", index), y: .value("Value", item))
-                                    .foregroundStyle(vm.swapColors(value: item)) // point graph
+                                    .foregroundStyle(vm.swapColors(value: item))
                             }
                         }
                     } else if vm.selectGraph == ".line" {
                         Chart {
-                            ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
+                            ForEach(Array(zip(vm.data.indices, vm.data.filter { $0 <= vm.nodes })), id: \.0) { index, item in
                                 LineMark(x: .value("Position", index), y: .value("Value", item))
                                     .foregroundStyle(vm.swapColorsTwo(valueTwo: item)) // line graph
                             }
                         }
                     } else if vm.selectGraph == ".area" {
                         Chart {
-                            ForEach(Array(zip(vm.data.indices, vm.data)), id: \.0)  {index, item in
+                            ForEach(Array(zip(vm.data.indices, vm.data.filter { $0 <= vm.nodes })), id: \.0) { index, item in
                                 AreaMark(x: .value("Position", index), y: .value("Value", item))
-                                    .foregroundStyle(vm.swapColorsTwo(valueTwo: item))// line graph
+                                    .foregroundStyle(vm.swapColorsTwo(valueTwo: item)) // line graph
                             }
                         }
                     }
@@ -471,7 +606,7 @@ struct ChartView: View {
                     }
                 }
                 .foregroundStyle(cvm.orange)
-                .frame(width: vm.nodes < 35 ? 330 : 390, height: vm.nodes < 35 ? 340 : 405)
+                .frame(width: vm.nodes < 35 ? 330 : 390, height: vm.nodes < 35 ? 350 : 405)
                 .onAppear {
                     vm.data = vm.generateInput()
                 }
@@ -522,6 +657,18 @@ struct ButtonsView: View {
                                 try await vm.quickSort()
                                 try await vm.swooping()
                                 
+                            } else if vm.selectAlgorithm == "radix" {
+                                
+                                try await vm.radixSort()
+                                try await vm.swooping()
+                                
+                            } else if vm.selectAlgorithm == "bitonic" {
+                                try await vm.sort()
+                                try await vm.swooping()
+                                
+                            } else if vm.selectAlgorithm == "cocktailShaker" {
+                                try await vm.cocktailShakerSort()
+                                try await vm.swooping()
                             }
                         }
                     }
@@ -578,82 +725,98 @@ struct ButtonsView: View {
                 }
                 .padding(.bottom, 10)
                 VStack {
-                    VStack(alignment: .leading, content:  {
+                    VStack(alignment: .center, spacing: 0, content:  {
                         
                         // Algorithms buttons
-                        HStack{
+                        HStack {
                             Spacer()
-                                .frame(width: 0)
+                                .frame(width: 10)
                             Text("ALGORITHMS")
-                                .font(.custom("SourceCodePro-Medium", size: 13))
+                                .font(.custom("SourceCodePro-Medium", size: 12))
                             Image(systemName: "wand.and.stars").resizable().frame(width: 20, height: 20)
                         }.onTapGesture {
-                            withAnimation(.spring(response: 0.15, dampingFraction: 0.50)) {
+                            withAnimation(.spring(response: 0.15)) {
                                 vm.expand.toggle()
                                 if vm.expand {
                                     vm.algorithmsButtonHeight = 290
+                                    vm.algorithmsButtonScrollHeight = 190
                                     vm.nodesButtonHeight = 0
                                     vm.graphsButtonHeight = 0
                                 } else if vm.expand == false {
                                     vm.graphsButtonHeight = 40
                                     vm.nodesButtonHeight = 40
                                     vm.algorithmsButtonHeight = 40
+                                    vm.algorithmsButtonScrollHeight = 0
 
                                 }
                             }
                             vm.algoButtonPressed.toggle()
                         }
                         .foregroundColor(vm.isSorting || vm.isSwooping ? Color.gray : Color.white)       .disabled(vm.isSorting || vm.isSwooping)
-                        
-                        if vm.expand {
-                            
-                            // button that triggers bubble sort for the sort button
-                            Button(action:  {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
-                                    vm.expand.toggle()
-                                    vm.graphsButtonHeight = 40
-                                    vm.nodesButtonHeight = 40
-                                    vm.algorithmsButtonHeight = 40
-                                }
-                                vm.myTitle = "bubbleSort()"
-                                vm.selectAlgorithm = "bubble"
-                                vm.algoButtonPressed.toggle()
-                                textVm.pseudoCode = """
+                        ScrollView(showsIndicators: true) {
+                            if vm.expand {
+                                
+                                ZStack {
+                                // button that triggers bubble sort for the sort button
+                                Button(action:  {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                        vm.expand.toggle()
+                                        vm.graphsButtonHeight = 40
+                                        vm.nodesButtonHeight = 40
+                                        vm.algorithmsButtonHeight = 40
+                                        vm.algorithmsButtonScrollHeight = 0
+                                        
+                                    }
+                                    vm.myTitle = "bubbleSort()"
+                                    vm.selectAlgorithm = "bubble"
+                                    vm.algoButtonPressed.toggle()
+                                    textVm.pseudoCode = """
                                                     func bubbleSort()
                                                         isSorted = false
-                                                        counter = 0
+                                                        count = 0
                                                         while not isSorted
                                                         isSorted = true
                                                         
-                                                            for j in range(0, arr - counter)
-                                                            if array[j] > array[j+1]:
-                                                                swap(i, i + 1)
-                                                                isSorted = false
+                                                        for j in range(0, arr - count)
+                                                        if array[j] > array[j+1]:
+                                                            swap(i, i + 1)
+                                                            isSorted = false
                                                     
                                                     
                             """
-                            }) {
-                                Text("bubble sort").padding()
-                                    .font(.custom("SourceCodePro-Medium", size: 15))
-                                    .underline(false)
+                                }) {
+                                    Text("bubble sort").padding()
+                                        .font(.custom("SourceCodePro-Medium", size: 15))
+                                        .underline(false)
+                                    
+                                }
+                                
+                                .buttonStyle(.borderless)
+                                .foregroundColor(Color.white)
+                                
+                                Rectangle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(.white)
+                                    .frame(width: 110, height: 40)
                                 
                             }
-                            
-                            .buttonStyle(.borderless)
-                            .foregroundColor(Color.white)
-                            
-                            // button that triggers selection sort for the sort button
-                            Button(action: {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
-                                    vm.expand.toggle()
-                                    vm.graphsButtonHeight = 40
-                                    vm.nodesButtonHeight = 40
-                                    vm.algorithmsButtonHeight = 40
-                                }
-                                vm.myTitle = "insertionSort()"
-                                vm.selectAlgorithm = "insertion"
-                                vm.algoButtonPressed.toggle()
-                                textVm.pseudoCode = """
+                                
+                                
+                                ZStack {
+                                    // button that triggers selection sort for the sort button
+                                    Button(action: {
+                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                            vm.expand.toggle()
+                                            vm.graphsButtonHeight = 40
+                                            vm.nodesButtonHeight = 40
+                                            vm.algorithmsButtonHeight = 40
+                                            vm.algorithmsButtonScrollHeight = 0
+                                            
+                                        }
+                                        vm.myTitle = "insertionSort()"
+                                        vm.selectAlgorithm = "insertion"
+                                        vm.algoButtonPressed.toggle()
+                                        textVm.pseudoCode = """
         func insertionSort(array):
         for i in 0 ..< array.count:
             j = i
@@ -665,31 +828,39 @@ struct ButtonsView: View {
 
             return array
 """
-                                
-                                
-                            }) {
-                                HStack {
-                                    Text("insertion sort").padding()
-                                        .font(.custom("SourceCodePro-Medium", size: 15))
-                                        .underline(false)
-                                }
-                            }
-                            .buttonStyle(.borderless)
-                            .foregroundColor(Color.white)
-                            
-                            // button that triggers heap sort for the sort button
-                            Button(action: {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
-                                    vm.expand.toggle()
-                                    vm.graphsButtonHeight = 40
-                                    vm.nodesButtonHeight = 40
-                                    vm.algorithmsButtonHeight = 40
+                                        
+                                        
+                                    }) {
+                                        HStack {
+                                            Text("insertion sort").padding()
+                                                .font(.custom("SourceCodePro-Medium", size: 15))
+                                                .underline(false)
+                                        }
+                                    }
+                                    .buttonStyle(.borderless)
+                                    .foregroundColor(Color.white)
+                                    Rectangle()
+                                        .stroke(lineWidth: 1)
+                                        .foregroundColor(.white)
+                                        .frame(width: 110, height: 40)
                                 }
                                 
-                                vm.myTitle = "quickSort()"
-                                vm.selectAlgorithm = "quick"
-                                vm.algoButtonPressed.toggle()
-                                textVm.pseudoCode = """
+                                    ZStack {
+                                // button that triggers heap sort for the sort button
+                                Button(action: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                        vm.expand.toggle()
+                                        vm.graphsButtonHeight = 40
+                                        vm.nodesButtonHeight = 40
+                                        vm.algorithmsButtonHeight = 40
+                                        vm.algorithmsButtonScrollHeight = 0
+                                        
+                                    }
+                                    
+                                    vm.myTitle = "quickSort()"
+                                    vm.selectAlgorithm = "quick"
+                                    vm.algoButtonPressed.toggle()
+                                    textVm.pseudoCode = """
         function quickSort(array, start, end):
             if start < end:
             pivotIndex = partition(array, start, end)
@@ -704,20 +875,273 @@ struct ButtonsView: View {
                     i += 1
                     array[i], array[j] = array[j], array[i]
             array[i + 1], array[end] = array[end], array[i + 1]
-           
-            return i + 1
+"""
+                                    
+                                }) {
+                                    Text("quick sort").padding()
+                                        .font(.custom("SourceCodePro-Medium", size: 15))
+                                        .underline(false)
+                                    
+                                } .buttonStyle(.borderless)
+                                    .foregroundColor(Color.white)
+                                
+                                Rectangle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(.white)
+                                    .frame(width: 110, height: 40)
+                            }
+                                
+                                
+                                
+                                ZStack {
+                                Button(action: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                        vm.expand.toggle()
+                                        vm.graphsButtonHeight = 40
+                                        vm.nodesButtonHeight = 40
+                                        vm.algorithmsButtonHeight = 40
+                                        vm.algorithmsButtonScrollHeight = 0
+                                        
+                                    }
+                                    
+                                    vm.myTitle = "RadixSort()"
+                                    vm.selectAlgorithm = "radix"
+                                    vm.algoButtonPressed.toggle()
+                                    textVm.pseudoCode = """
+        func countingSort(by place: Int) async throws {
+            let radix = 10
+            var count = [Int](repeating: 0, count: radix)
+            var output = [Int](repeating: 0, count: data.count)
+            
+            for number in data {
+                let digit = getDigit(number, at: place)
+                count[digit] += 1
+            }
+            
+            for i in 1..<radix {
+                count[i] += count[i - 1]
+            }
+            
+            for number in data.reversed() {
+                let digit = getDigit(number, at: place)
+                count[digit] -= 1
+                output[count[digit]] = number
+            }
+            
+            for i in 0..<data.count {
+                data[i] = output[i]
+            }
+        }
+        
+        func getMax() -> Int {
+            guard let max = data.max() else {
+                fatalError("Array is empty")
+            }
+            return max
+        }
+        
+        func radixSort() async throws {
+         
+            isSorting = true
+            let maxNumber = getMax()
+            var place = 1
+            
+            while maxNumber / place > 0 {
+
+                whileCountCounter += 1
+                try await countingSort(by: place)
+                place *= 10
+            }
+            
+            sortComplete = true
+        }
 
 """
+                                    
+                                }) {
+                                    Text("Radix sort").padding()
+                                        .font(.custom("SourceCodePro-Medium", size: 15))
+                                        .underline(false)
+                                    
+                                } .buttonStyle(.borderless)
+                                    .foregroundColor(Color.white)
                                 
-                            }) {
-                                Text("quick sort").padding()
-                                    .font(.custom("SourceCodePro-Medium", size: 15))
-                                    .underline(false)
+                                Rectangle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(.white)
+                                    .frame(width: 110, height: 40)
+                            }
                                 
-                            } .buttonStyle(.borderless)
+                                ZStack {
+                                Button(action: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                        vm.expand.toggle()
+                                        vm.graphsButtonHeight = 40
+                                        vm.nodesButtonHeight = 40
+                                        vm.algorithmsButtonHeight = 40
+                                        vm.algorithmsButtonScrollHeight = 0
+                                        
+                                    }
+                                    
+                                    vm.myTitle = "BitonicSort()"
+                                    vm.selectAlgorithm = "bitonic"
+                                    vm.algoButtonPressed.toggle()
+                                    textVm.pseudoCode = """
+        func countingSort(by place: Int) async throws {
+            let radix = 10
+            var count = [Int](repeating: 0, count: radix)
+            var output = [Int](repeating: 0, count: data.count)
+            
+            for number in data {
+                let digit = getDigit(number, at: place)
+                count[digit] += 1
+            }
+            
+            for i in 1..<radix {
+                count[i] += count[i - 1]
+            }
+            
+            for number in data.reversed() {
+                let digit = getDigit(number, at: place)
+                count[digit] -= 1
+                output[count[digit]] = number
+            }
+            
+            for i in 0..<data.count {
+                data[i] = output[i]
+            }
+        }
+        
+        func getMax() -> Int {
+            guard let max = data.max() else {
+                fatalError("Array is empty")
+            }
+            return max
+        }
+        
+        func radixSort() async throws {
+         
+            isSorting = true
+            let maxNumber = getMax()
+            var place = 1
+            
+            while maxNumber / place > 0 {
+
+                whileCountCounter += 1
+                try await countingSort(by: place)
+                place *= 10
+            }
+            
+            sortComplete = true
+        }
+
+"""
+                                    
+                                }) {
+                                    Text("Bitonic Sort").padding()
+                                        .font(.custom("SourceCodePro-Medium", size: 15))
+                                        .underline(false)
+                                    
+                                } .buttonStyle(.borderless)
+                                    .foregroundColor(Color.white)
+                                
+                                Rectangle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(.white)
+                                    .frame(width: 110, height: 40)
+                            }
+                            ZStack {
+                     
+                                Button(action: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.65)) {
+                                        vm.expand.toggle()
+                                        vm.graphsButtonHeight = 40
+                                        vm.nodesButtonHeight = 40
+                                        vm.algorithmsButtonHeight = 40
+                                        vm.algorithmsButtonScrollHeight = 0
+                                        
+                                    }
+                                    
+                                    vm.myTitle = "cocktailShakerSort()"
+                                    vm.selectAlgorithm = "cocktailShaker"
+                                    vm.algoButtonPressed.toggle()
+                                    textVm.pseudoCode = """
+        func countingSort(by place: Int) async throws {
+            let radix = 10
+            var count = [Int](repeating: 0, count: radix)
+            var output = [Int](repeating: 0, count: data.count)
+            
+            for number in data {
+                let digit = getDigit(number, at: place)
+                count[digit] += 1
+            }
+            
+            for i in 1..<radix {
+                count[i] += count[i - 1]
+            }
+            
+            for number in data.reversed() {
+                let digit = getDigit(number, at: place)
+                count[digit] -= 1
+                output[count[digit]] = number
+            }
+            
+            for i in 0..<data.count {
+                data[i] = output[i]
+            }
+        }
+        
+        func getMax() -> Int {
+            guard let max = data.max() else {
+                fatalError("Array is empty")
+            }
+            return max
+        }
+        
+        func radixSort() async throws {
+         
+            isSorting = true
+            let maxNumber = getMax()
+            var place = 1
+            
+            while maxNumber / place > 0 {
+
+                whileCountCounter += 1
+                try await countingSort(by: place)
+                place *= 10
+            }
+            
+            sortComplete = true
+        }
+
+"""
+                                    
+                                }) {
+                                    Text("Cocktail Shaker Sort").padding()
+                                        .font(.custom("SourceCodePro-Medium", size: 15))
+                                        .underline(false)
+                                    
+                                }
+                                
+                                .buttonStyle(.borderless)
                                 .foregroundColor(Color.white)
+             
+                                Rectangle()
+                                    .stroke(lineWidth: 1)
+                                    .foregroundColor(.white)
+                                    .frame(width: 110, height: 40)
+                            }
+                            }
                         }
+                        .frame(width: 130, height: vm.algorithmsButtonScrollHeight)
                         
+                        if vm.expand {
+                            Image(systemName: "chevron.down").resizable().frame(width: 50, height: 10)
+
+                                .foregroundColor(.white)
+                                .padding(.top, 20)
+
+                        }
                     })
                     .frame(width: 130, height: vm.algorithmsButtonHeight)
                     .background(cvm.purple)

@@ -7,14 +7,16 @@
 import AVFoundation
 import Foundation
 
+
 class Beep {
     var mixer: AVAudioMixerNode?
     var timer = Timer()
     var timerStart = Timer()
     let engine = AVAudioEngine()
     
+    
     func beep(_ frequency: Int) {
-        let frequency = Float(frequency) * Float(frequency) + 800
+        let frequency = Float(frequency) * Float(frequency) + 900
         let amplitude = Float(1)
         let duration = 0.05
         
